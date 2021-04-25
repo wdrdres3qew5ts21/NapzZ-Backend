@@ -1,9 +1,0 @@
-#!/bin/bash
-echo "Set JVM Momory"
-java -Xms 1.2G
-echo "==== Display Custom ENV ===="
-env
-echo "==== Display JVM Heap ===="
-echo "Display JVM Heap: $(java -XX:+PrintFlagsFinal -version | grep HeapSize)"
-
-exec /usr/libexec/s2i/assemble

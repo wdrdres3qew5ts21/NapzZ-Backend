@@ -41,10 +41,10 @@ public class IntegrationController {
     @RestClient
     private CountryInterface countryInterface;
 
-    @ConfigProperty(name = "enissan.clientid")
+    @ConfigProperty(name = "clientid")
     private String ENISSAN_INTERFACE_CLIENT_ID;
 
-    @ConfigProperty(name = "enissan.clientsecret")
+    @ConfigProperty(name = "clientsecret")
     private String ENISSAN_INTERFACE_CLIENT_SECRET;
 
     private String grantType = "client_credentials";
