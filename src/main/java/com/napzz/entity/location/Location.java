@@ -6,6 +6,14 @@ public class Location {
 
     private String detail;
 
+    public Location() {
+    }
+
+    public Location(String city, String detail) {
+        this.city = city;
+        this.detail = detail;
+    }
+
     public String getCity() {
         return city;
     }

@@ -33,8 +33,8 @@ public class RoomController {
 
     @Path("init")
     @GET
-    public void response(){
-        roomService.init();
+    public Room response(){
+        return roomService.init();
     }
 
     @Path("facility")

@@ -9,9 +9,8 @@ release.properties
 .project
 .classpath
 .settings/
-src/resources/application.properties
 
-
+src/main/resources/application.properties
 # IntelliJ
 .idea
 *.ipr

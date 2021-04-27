@@ -2,11 +2,14 @@ package com.napzz.entity.room;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat.Feature;
 import com.napzz.entity.asset.FacilityFeature;
@@ -25,14 +28,16 @@ public class Room {
 
     private String roomName;
 
+    @Column(length = 4000)
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Image> images;
 
     private double price;
 
-    private String contractType;
+    @OneToOne
+    private ContractType contractType;
 
     @ManyToMany
     private List<LandmarkFeature> features;
@@ -40,11 +45,29 @@ public class Room {
     @OneToMany
     private List<FacilityFeature> facilities;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     @Embedded
     private Location location;
+
+    public Room(){
+
+    }
+
+    public Room(int id, String roomName, String description, List<Image> images, double price, ContractType contractType,
+            List<LandmarkFeature> features, List<FacilityFeature> facilities, List<Review> reviews, Location location) {
+        this.id = id;
+        this.roomName = roomName;
+        this.description = description;
+        this.images = images;
+        this.price = price;
+        this.contractType = contractType;
+        this.features = features;
+        this.facilities = facilities;
+        this.reviews = reviews;
+        this.location = location;
+    }
 
     public int getId() {
         return id;
@@ -86,11 +109,11 @@ public class Room {
         this.price = price;
     }
 
-    public String getContractType() {
+    public ContractType getContractType() {
         return contractType;
     }
 
-    public void setContractType(String contractType) {
+    public void setContractType(ContractType contractType) {
         this.contractType = contractType;
     }
 

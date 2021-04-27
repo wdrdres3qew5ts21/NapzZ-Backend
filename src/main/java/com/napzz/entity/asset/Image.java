@@ -17,6 +17,16 @@ public class Image {
 
     private String url;
 
+    
+    public Image(){
+        
+    }
+
+    public Image(int imageId, String url) {
+        this.imageId = imageId;
+        this.url = url;
+    }
+
     public int getImageId() {
         return imageId;
     }

@@ -1,5 +1,6 @@
 package com.napzz.entity.review;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,24 @@ public class Review {
 
     private String name;
 
+    @Column(length = 1000)
     private String comment;
+
+    public Review() {
+    }
+
+    public Review( double rating, String name, String comment) {
+        this.rating = rating;
+        this.name = name;
+        this.comment = comment;
+    }
+
+    public Review(int reviewId, double rating, String name, String comment) {
+        this.reviewId = reviewId;
+        this.rating = rating;
+        this.name = name;
+        this.comment = comment;
+    }
 
     public int getReviewId() {
         return reviewId;
