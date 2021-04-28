@@ -16,6 +16,9 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.13.2.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <sonar.projectKey>wdrdres3qew5ts21_NapzZ-Backend</sonar.projectKey>
+    <sonar.organization>cloud-native</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
   <dependencyManagement>
     <dependencies>
