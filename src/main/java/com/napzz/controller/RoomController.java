@@ -21,6 +21,7 @@ import com.napzz.service.RoomService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
+
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
