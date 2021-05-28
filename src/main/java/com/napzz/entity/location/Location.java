@@ -2,6 +2,8 @@ package com.napzz.entity.location;
 
 public class Location {
 
+    private String province;
+
     private String city;
 
     private String detail;
@@ -12,6 +14,14 @@ public class Location {
     public Location(String city, String detail) {
         this.city = city;
         this.detail = detail;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getCity() {
@@ -32,7 +42,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location [city=" + city + ", detail=" + detail + "]";
+        return "Location [city=" + city + ", detail=" + detail + ", province=" + province + "]";
     }
 
 }

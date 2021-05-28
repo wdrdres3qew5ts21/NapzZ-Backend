@@ -31,7 +31,7 @@ import com.napzz.entity.user.User;
 import com.napzz.service.JWTUtil;
 import com.napzz.service.RoomService;
 import com.napzz.service.UserService;
-
+import io.smallrye.jwt.auth.principal.JWTParser;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
@@ -47,12 +47,24 @@ public class UserController {
     @Inject
     JsonWebToken jwt;
 
+    @Inject 
+    JWTParser jwtParser;
+
     @GET()
     @Path("permit-all")
     @PermitAll
     @Produces(MediaType.TEXT_PLAIN)
     public String hello(@Context SecurityContext ctx) {
+        jwt.getRawToken();
         return getResponseString(ctx);
+    }
+
+    @GET()
+    @Path("check-all")
+    @PermitAll
+    @Produces(MediaType.TEXT_PLAIN)
+    public String check() {
+        return jwt.getRawToken();
     }
 
     @GET

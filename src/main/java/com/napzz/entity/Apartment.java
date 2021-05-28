@@ -23,10 +23,10 @@ public class Apartment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int aprtmentId;
 
-    private String apartmentName;
+    private String name;
 
     @Column(length = 5000)
-    private String apartmentDescription;
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Image> images;
@@ -42,20 +42,20 @@ public class Apartment {
         this.aprtmentId = aprtmentId;
     }
 
-    public String getApartmentName() {
-        return apartmentName;
+    public String getName() {
+        return name;
     }
 
-    public void setApartmentName(String apartmentName) {
-        this.apartmentName = apartmentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getApartmentDescription() {
-        return apartmentDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setApartmentDescription(String apartmentDescription) {
-        this.apartmentDescription = apartmentDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Image> getImages() {
@@ -76,7 +76,7 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment [apartmentDescription=" + apartmentDescription + ", apartmentName=" + apartmentName
+        return "Apartment [apartmentDescription=" + description + ", apartmentName=" + name
                 + ", aprtmentId=" + aprtmentId + ", images=" + images + ", location=" + location + "]";
     }
 
