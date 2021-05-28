@@ -9,6 +9,8 @@ mvn quarkus:dev
 
 mvn quarkus:dev -D"mp.jwt.verify.publickey.location=publicKey.pem" -D"smallrye.jwt.sign.key-location=privateKey.pem"
 ```
+ไฟล์ที่อ่านจาก application.properties ถ้าจะใช้ relative path ก็ต้องวางใน directories resources ด้วยไม่อย่างนั้นจะมองไม่เห็น
+
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
