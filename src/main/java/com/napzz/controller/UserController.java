@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.resource.spi.ConfigProperty;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.*;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.napzz.dto.OAuthPrincial;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;
@@ -32,7 +34,11 @@ public class UserController {
     @Inject
     UserService userService;
 
-
+    @GET
+    @Path("mail")
+    public JsonNode sentMail(){
+        return this.userService.sentMail();
+    }
   
     
 }

@@ -1,27 +1,41 @@
 package com.napzz.service;
 
 import java.net.http.HttpResponse;
+import java.util.Base64;
 
 import javax.enterprise.context.ApplicationScoped;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @ApplicationScoped
 public class MailService {
 
+	@RestClient
+	private MailGunEndpointInterface mailGunEndpointInterface;
 
-    
-    // public static JsonNode sendSimpleMessage() throws UnirestException {
-	// 	HttpResponse<JsonNode> request = RestClient.post("https://api.mailgun.net/v3/" + YOUR_DOMAIN_NAME + "/messages"),
-	// 		.basicAuth("api", API_KEY)
-	// 		.queryString("from", "Excited User <USER@YOURDOMAIN.COM>")
-	// 		.queryString("to", "artemis@example.com")
-	// 		.queryString("subject", "hello")
-	// 		.queryString("text", "testing")
-	// 		.asJson();
-	// 	return request.getBody();
-	// }
-    
+	@ConfigProperty(name = "mailgun.key")
+	private String MAILGUN_KEY;
+
+	@ConfigProperty(name = "mailgun.sender")
+	private String MAILGUN_SENDER;
+
+	public String lookupAuth() {
+		String authenString = "api:" + MAILGUN_KEY;
+		String encodedString = Base64.getEncoder().encodeToString(authenString.getBytes());
+		return "Basic " + encodedString;
+	}
+
+	public JsonNode sendMail() {
+		String to = "wdrdres3qew5ts21@gmail.com";
+		String subject = "Napzz Authentication";
+		String text = "Confirm Reservation Room Key was: 551462";
+		JsonNode httpPostMailMessage = null;
+		httpPostMailMessage = mailGunEndpointInterface.httpPostMailMessage(lookupAuth(), MAILGUN_SENDER, to, subject, text);
+		System.out.println(httpPostMailMessage);
+		return httpPostMailMessage;
+	}
+
 }
