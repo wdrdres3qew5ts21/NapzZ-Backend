@@ -16,6 +16,7 @@ import com.napzz.entity.room.ContractType;
 import com.napzz.entity.room.Room;
 import com.napzz.repository.ContractTypeRepository;
 import com.napzz.repository.FacilityFeatureRepository;
+import com.napzz.repository.LandmarkFeatureRepository;
 import com.napzz.repository.RoomRepository;
 
 @ApplicationScoped

@@ -24,9 +24,11 @@ import com.napzz.entity.room.Room;
 import com.napzz.entity.user.ApartmentOwner;
 import com.napzz.entity.user.Customer;
 import com.napzz.entity.user.User;
+import com.napzz.service.JWTUtil;
 import com.napzz.service.RoomService;
 import com.napzz.service.UserService;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 
@@ -39,8 +41,6 @@ public class UserController {
     @Inject
     UserService userService;
 
-    @Inject
-    JsonWebToken jwt; 
 
     @GET
     @Path("mail")
@@ -52,11 +52,14 @@ public class UserController {
     @Path("user/login")
     public Response login(@RequestBody User LoginRequest){
         User loginResponse = this.userService.login(LoginRequest);
+        HashMap<String, String> response = new HashMap();
         if(loginResponse == null){
-            HashMap<String, String> response = new HashMap();
+            response.put("errorMessage", "AythenticationFailed");
             return Response.status(401).entity(response).build();
         }
-        return Response.ok(loginResponse).build();
+        String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
+        response.put("jwtToken", generateJWTToken);
+        return Response.ok(response).build();
 
     }
 

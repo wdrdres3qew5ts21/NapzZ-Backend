@@ -1,4 +1,4 @@
-package com.napzz.service;
+package com.napzz.repository;
 
 import com.napzz.entity.asset.LandmarkFeature;
 

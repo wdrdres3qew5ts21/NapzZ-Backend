@@ -23,9 +23,32 @@ public class User {
     @Column(unique = true)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
     private String usertype;
+
+    @Column(nullable = false)
+    private String firstname;
+
+    @Column(nullable = false)
+    private String lastname;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
     public int getUserId() {
         return userId;
