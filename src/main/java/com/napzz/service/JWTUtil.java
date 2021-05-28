@@ -1,5 +1,6 @@
 package com.napzz.service;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -14,11 +15,9 @@ import io.smallrye.jwt.build.Jwt;
 public class JWTUtil {
 
     public static String generateJWTToken(User user) {
-        String token = Jwt.issuer("http://localhost:8080/issuer").upn(user.getEmail())
-                .claim("FIRSTNAME", user.getFirstname())
-                .claim("LASTNAME", user.getLastname())
-                .claim("ROLE", user.getUsertype())
-                .sign();
+        String token = Jwt.issuer("http://localhost:8080/issuer").upn(user.getEmail()).expiresIn(Duration.ofMinutes(60))
+                .claim("FIRSTNAME", user.getFirstname()).claim("LASTNAME", user.getLastname())
+                .claim("ROLE", user.getUsertype()).sign();
         System.out.println(token);
         return token;
     }
