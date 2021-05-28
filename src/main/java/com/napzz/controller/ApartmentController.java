@@ -44,9 +44,16 @@ public class ApartmentController {
     @Path("apartments")
     @GET
     public Response listApartment(){
-        List<Room> roomList = apartmentService.listRoom();
-        return Response.ok(roomList).build();
+        List<Apartment> aprtmentList = apartmentService.listApartment();
+        return Response.ok(aprtmentList).build();
     }
  
+
+    @Path("apartment")
+    @POST
+    public Response createApartment(@RequestBody Apartment apartment){
+        Apartment createApartment = apartmentService.createApartment(apartment);
+        return Response.ok(createApartment).build();
+    }
     
 }
