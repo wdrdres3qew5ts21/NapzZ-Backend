@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @POST
-    @Path("login")
-    public JsonNode login(@RequestBody User LoginRequest){
+    @Path("user/login")
+    public User login(@RequestBody User LoginRequest){
         return this.userService.login(LoginRequest);
     }
 

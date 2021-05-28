@@ -31,8 +31,8 @@ public class UserService {
         return mailService.sendMail();
     }
 
-    public JsonNode login(User loginRequest) {
-        return null;
+    public User login(User loginRequest) {
+        return userRepository.findByUsername(loginRequest.getUsername());
     }
 
     public JsonNode registerWithEmail(User registerRequest) {
