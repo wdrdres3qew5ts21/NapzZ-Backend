@@ -16,9 +16,13 @@ import javax.ws.rs.core.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.napzz.dto.OAuthPrincial;
+import com.napzz.dto.authen.LoginRequest;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;
 import com.napzz.entity.room.Room;
+import com.napzz.entity.user.ApartmentOwner;
+import com.napzz.entity.user.Customer;
+import com.napzz.entity.user.User;
 import com.napzz.service.RoomService;
 import com.napzz.service.UserService;
 
@@ -38,6 +42,24 @@ public class UserController {
     @Path("mail")
     public JsonNode sentMail(){
         return this.userService.sentMail();
+    }
+
+    @POST
+    @Path("login")
+    public JsonNode login(@RequestBody User LoginRequest){
+        return this.userService.login(LoginRequest);
+    }
+
+    @POST
+    @Path("register/customer/email")
+    public Customer customerRegisterWithEmail(@RequestBody Customer customerRegisterRequest){
+        return this.userService.customerRegisterWithEmail(customerRegisterRequest);
+    }
+
+    @POST
+    @Path("register/aprtment-owner/email")
+    public JsonNode aprtmentOwnerRegister(@RequestBody ApartmentOwner aprtmentOwnerRegisterRequest){
+        return this.userService.aprtmentOwnerRegister(aprtmentOwnerRegisterRequest);
     }
   
     
