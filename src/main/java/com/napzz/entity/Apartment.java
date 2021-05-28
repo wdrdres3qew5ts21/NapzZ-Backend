@@ -21,7 +21,7 @@ public class Apartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int aprtmentId;
+    private int apartmentId;
 
     private String name;
 
@@ -34,12 +34,12 @@ public class Apartment {
     @Embedded
     private Location location;
 
-    public int getAprtmentId() {
-        return aprtmentId;
+    public int getApartmentId() {
+        return apartmentId;
     }
 
-    public void setAprtmentId(int aprtmentId) {
-        this.aprtmentId = aprtmentId;
+    public void setApartmentId(int aprtmentId) {
+        this.apartmentId = aprtmentId;
     }
 
     public String getName() {
@@ -77,7 +77,7 @@ public class Apartment {
     @Override
     public String toString() {
         return "Apartment [apartmentDescription=" + description + ", apartmentName=" + name
-                + ", aprtmentId=" + aprtmentId + ", images=" + images + ", location=" + location + "]";
+                + ", aprtmentId=" + apartmentId + ", images=" + images + ", location=" + location + "]";
     }
 
 }
