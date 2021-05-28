@@ -1,7 +1,13 @@
 # backend project
 
+
+
 ```
 docker-compose up -d
+
+mvn quarkus:dev
+
+mvn quarkus:dev -D"mp.jwt.verify.publickey.location=publicKey.pem" -D"smallrye.jwt.sign.key-location=privateKey.pem"
 ```
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
