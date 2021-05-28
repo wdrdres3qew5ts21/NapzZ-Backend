@@ -7,11 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat.Feature;
+import com.napzz.entity.Apartment;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.Image;
 import com.napzz.entity.asset.LandmarkFeature;
@@ -19,6 +21,7 @@ import com.napzz.entity.location.Location;
 import com.napzz.entity.review.Review;
 
 import org.jboss.logmanager.handlers.SyslogHandler.Facility;
+import org.jboss.resteasy.spi.touri.MappedBy;
 
 @Entity
 public class Room {
@@ -42,7 +45,7 @@ public class Room {
     @ManyToMany
     private List<LandmarkFeature> features;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<FacilityFeature> facilities;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -50,6 +53,9 @@ public class Room {
 
     @Embedded
     private Location location;
+
+    @OneToOne
+    private Apartment apartment;
 
     public Room(){
 
@@ -75,6 +81,14 @@ public class Room {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
     }
 
     public String getRoomName() {

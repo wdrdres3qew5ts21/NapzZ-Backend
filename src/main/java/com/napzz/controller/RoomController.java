@@ -72,6 +72,7 @@ public class RoomController {
         List<Room> roomList = roomService.listRoom();
         return Response.ok(roomList).build();
     }
+
  
     
 }

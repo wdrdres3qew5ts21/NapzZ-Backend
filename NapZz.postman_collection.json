@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7bbb1437-70c9-41b7-bc54-5c83fe8bfd9d",
+		"_postman_id": "f4edb8a6-1d16-4a06-815c-4b1bd54eadf3",
 		"name": "NapZz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -643,13 +643,78 @@
 			]
 		},
 		{
-			"name": "สร้าง Room",
+			"name": "สร้าง Room 1",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"roomId\": \"1\",\r\n    \"roomName\": \"หอธวัชล้ำฟ้า Phuket\",\r\n    \"description\": \"Drawing its design theme from the classic Sino-Portuguese architecture that characterises Phuket Town, Centara Grand Beach Resort Phuket is set directly on the sands at Karon Beach, backed by a green hill, and grouped around its own water park.  The resort offers a memorable holiday experience for everyone: couples and families will love the exhilarating leisure activities, the water sports, and of course the water park, and corporate and incentive groups have fine meeting facilities.\",\r\n    \"images\": [\r\n        {\r\n            \"imageId\": \"1\",\r\n            \"url\": \"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768\"\r\n        },\r\n        {\r\n            \"imageId\": \"2\",\r\n            \"url\": \"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 2500,\r\n    \"contractType\": \"monthly\",\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 400 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": \"1\",\r\n            \"facility\": \"Two Bed\"\r\n        },\r\n        {\r\n            \"facilityId\": \"2\",\r\n            \"facility\": \"Elagant Vantage\"\r\n        },\r\n        {\r\n            \"facilityId\": \"3\",\r\n            \"facility\": \"No Smoking\"\r\n        },\r\n        {\r\n            \"facilityId\": \"4\",\r\n            \"facility\": \"Air Conditioning\"\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"Phuket\",\r\n        \"detail\": \"30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"apartment\": {\r\n        \"apartmentId\": 1\r\n    },\r\n    \"roomName\": \"ห้องสตูดิโอ 45 ตรม.\",\r\n    \"description\": \"ตกแต่งพร้อมเข้าอยู่ บิลอินตู้เสื้อผ้า เตียง โต็ะแต่งตัว แอร์ ทีวี ตู้เย็น เครื่องทำนํ้าอุ่น บริเวณเตรียมอาหารพร้อมซิงค์ล้างจาน จอดรถ1คันต่อห้องไม่คิดค่าบริการ มีรปภ 24 ชม. พร้อมลิฟท์โดยสาร\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-bedroom-ideas-stregis-08-1573683802.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-bedroom-jeannette-fristoe-1559156532.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 2500,\r\n    \"contractType\": {\r\n        \"contractId\": 1\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": \"1\",\r\n            \"facility\": \"Two Bed\"\r\n        },\r\n        {\r\n            \"facilityId\": \"2\",\r\n            \"facility\": \"Elagant Vantage\"\r\n        },\r\n        {\r\n            \"facilityId\": \"3\",\r\n            \"facility\": \"No Smoking\"\r\n        },\r\n        {\r\n            \"facilityId\": \"4\",\r\n            \"facility\": \"Air Conditioning\"\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Room 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"2\",\r\n     \"apartment\": {\r\n        \"apartmentId\": 2\r\n    },\r\n    \"roomName\": \"ห้องลอฟต์ loft กว้างพรีเมี่ยม\",\r\n    \"description\": \"ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": \"1\",\r\n            \"facility\": \"Two Bed\"\r\n        },\r\n        {\r\n            \"facilityId\": \"2\",\r\n            \"facility\": \"Elagant Vantage\"\r\n        },\r\n        {\r\n            \"facilityId\": \"3\",\r\n            \"facility\": \"No Smoking\"\r\n        },\r\n        {\r\n            \"facilityId\": \"4\",\r\n            \"facility\": \"Air Conditioning\"\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"Phuket\",\r\n        \"detail\": \"30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

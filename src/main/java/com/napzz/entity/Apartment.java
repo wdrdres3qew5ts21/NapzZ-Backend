@@ -9,10 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.napzz.entity.asset.Image;
 import com.napzz.entity.location.Location;
+import com.napzz.entity.room.Room;
 
 import org.hibernate.annotations.GeneratorType;
 
@@ -34,6 +36,9 @@ public class Apartment {
     @Embedded
     private Location location;
 
+    @OneToMany
+    private List<Room> roomList;
+
     public int getApartmentId() {
         return apartmentId;
     }
@@ -48,6 +53,14 @@ public class Apartment {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
     }
 
     public String getDescription() {
@@ -76,8 +89,8 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment [apartmentDescription=" + description + ", apartmentName=" + name
-                + ", aprtmentId=" + apartmentId + ", images=" + images + ", location=" + location + "]";
+        return "Apartment [apartmentId=" + apartmentId + ", description=" + description + ", images=" + images
+                + ", location=" + location + ", name=" + name + ", roomList=" + roomList + "]";
     }
 
 }
