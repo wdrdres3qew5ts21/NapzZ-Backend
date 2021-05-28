@@ -32,7 +32,11 @@ public class UserService {
     }
 
     public User login(User loginRequest) {
-        return userRepository.findByUsername(loginRequest.getUsername());
+         User foundedUsername = userRepository.findByUsername(loginRequest.getUsername());
+         if(foundedUsername.getPassword().equals(loginRequest.getPassword())){
+            return foundedUsername;
+         }
+         return null;
     }
 
     public JsonNode registerWithEmail(User registerRequest) {

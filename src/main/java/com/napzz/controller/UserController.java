@@ -1,5 +1,6 @@
 package com.napzz.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,9 @@ public class UserController {
     @Inject
     UserService userService;
 
+    @Inject
+    JsonWebToken jwt; 
+
     @GET
     @Path("mail")
     public JsonNode sentMail(){
@@ -46,8 +50,14 @@ public class UserController {
 
     @POST
     @Path("user/login")
-    public User login(@RequestBody User LoginRequest){
-        return this.userService.login(LoginRequest);
+    public Response login(@RequestBody User LoginRequest){
+        User loginResponse = this.userService.login(LoginRequest);
+        if(loginResponse == null){
+            HashMap<String, String> response = new HashMap();
+            return Response.status(401).entity(response).build();
+        }
+        return Response.ok(loginResponse).build();
+
     }
 
     @POST

@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "7bbb1437-70c9-41b7-bc54-5c83fe8bfd9d",
+		"name": "NapZz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/user/login",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "ผู้ใช้บริการสมัครสมาชิก email Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/register/customer/email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"register",
+						"customer",
+						"email"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Apartment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"roomId\": \"1\",\r\n    \"roomName\": \"หอธวัชล้ำฟ้า Phuket\",\r\n    \"description\": \"Drawing its design theme from the classic Sino-Portuguese architecture that characterises Phuket Town, Centara Grand Beach Resort Phuket is set directly on the sands at Karon Beach, backed by a green hill, and grouped around its own water park.  The resort offers a memorable holiday experience for everyone: couples and families will love the exhilarating leisure activities, the water sports, and of course the water park, and corporate and incentive groups have fine meeting facilities.\",\r\n    \"images\": [\r\n        {\r\n            \"imageId\": \"1\",\r\n            \"url\": \"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768\"\r\n        },\r\n        {\r\n            \"imageId\": \"2\",\r\n            \"url\": \"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 2500,\r\n    \"contractType\": \"monthly\",\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 400 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": \"1\",\r\n            \"facility\": \"Two Bed\"\r\n        },\r\n        {\r\n            \"facilityId\": \"2\",\r\n            \"facility\": \"Elagant Vantage\"\r\n        },\r\n        {\r\n            \"facilityId\": \"3\",\r\n            \"facility\": \"No Smoking\"\r\n        },\r\n        {\r\n            \"facilityId\": \"4\",\r\n            \"facility\": \"Air Conditioning\"\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"Phuket\",\r\n        \"detail\": \"30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Facility ขนส่งใกล้ Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"landmark\": \"บริการขนส่งสาธารณะในระยะ 400 เมตร\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/facility",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"facility"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Facility Wifi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"landmark\": \"Wifi Free Whole Apartment\"\r\n}\r\n            ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/facility",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"facility"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Facility Wifi Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"landmark\": \"Gym Maxxing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/facility",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"facility"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "List All Room",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/rooms",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search Room By Name",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{napzz-backend}}/api/rooms?price<2000&roomName=",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"rooms"
+							],
+							"query": [
+								{
+									"key": "price<2000",
+									"value": null
+								},
+								{
+									"key": "roomName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"roomId\": \"2\",\r\n        \"roomName\": \"หอพักหลับสบาย\",\r\n        \"description\": \"ก่อตั้งในเขตพระนครตั้งแต่ พศ. 2510 โดยมีหัวหน้าครอบครัวเป็นอากงทิตงทั้งและอาม้าซี้อิม เป็นผู้ดูแลกิจกรรมความสะอาด\",\r\n        \"images\": [\r\n            {\r\n                \"imageId\": \"3\",\r\n                \"url\": \"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768\"\r\n            },\r\n            {\r\n                \"imageId\": \"4\",\r\n                \"url\": \"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg\"\r\n            }\r\n        ],\r\n        \"price\": 1800,\r\n        \"contractType\": \"monthly\",\r\n        \"features\": [\r\n            {\r\n                \"landmarkId\": \"1\",\r\n                \"landmark\": \"บริการขนส่งสาธารณะในระยะ 200 เมตร\"\r\n            },\r\n            {\r\n                \"landmarkId\": \"2\",\r\n                \"landmark\": \"Wifi Free Whole Apartment\"\r\n            },\r\n        ],\r\n        \"facilities\": [\r\n            {\r\n                \"facilityId\": \"1\",\r\n                \"facility\": \"Two Bed\"\r\n            },\r\n            {\r\n                \"facilityId\": \"3\",\r\n                \"facility\": \"No Smoking\"\r\n            },\r\n            {\r\n                \"facilityId\": \"4\",\r\n                \"facility\": \"Air Conditioning\"\r\n            }\r\n        ],\r\n        \"review\": [\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"Clarissa Claudia\",\r\n                \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n            },\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n                \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"city\": \"Bangkok\",\r\n            \"detail\": \"ถ.กรุงเกษม บางขุนพรหม พระนคร กรุงเทพมหานคร\",\r\n            \"googleMap\": {}\r\n        }\r\n    }\r\n]"
+				},
+				{
+					"name": "Display Room ID 2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{napzz-backend}}/api/rooms/1",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								"1"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "\r\n    {\r\n        \"roomId\": \"2\",\r\n        \"roomName\": \"หอพักหลับสบาย\",\r\n        \"description\": \"ก่อตั้งในเขตพระนครตั้งแต่ พศ. 2510 โดยมีหัวหน้าครอบครัวเป็นอากงทิตงทั้งและอาม้าซี้อิม เป็นผู้ดูแลกิจกรรมความสะอาด\",\r\n        \"images\": [\r\n            {\r\n                \"imageId\": \"3\",\r\n                \"url\": \"https://pix6.agoda.net/hotelImages/1120240/-1/f914589d5858fd03a63c3a5b65f12dfe.jpg?s=1024x768\"\r\n            },\r\n            {\r\n                \"imageId\": \"4\",\r\n                \"url\": \"https://q-xx.bstatic.com/xdata/images/hotel/840x460/253802365.jpg?k=7ca87e6659b5d5e039e56890ce13cbd5db96f57bad4235eebcdcc930fc134725&o=\"\r\n            }\r\n        ],\r\n        \"price\": 1800,\r\n        \"contractType\": \"monthly\",\r\n        \"features\": [\r\n            {\r\n                \"landmarkId\": \"1\",\r\n                \"landmark\": \"บริการขนส่งสาธารณะในระยะ 200 เมตร\"\r\n            },\r\n            {\r\n                \"landmarkId\": \"2\",\r\n                \"landmark\": \"Wifi Free Whole Apartment\"\r\n            },\r\n        ],\r\n        \"facilities\": [\r\n            {\r\n                \"facilityId\": \"1\",\r\n                \"facility\": \"Two Bed\"\r\n            },\r\n            {\r\n                \"facilityId\": \"3\",\r\n                \"facility\": \"No Smoking\"\r\n            },\r\n            {\r\n                \"facilityId\": \"4\",\r\n                \"facility\": \"Air Conditioning\"\r\n            }\r\n        ],\r\n        \"review\": [\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"Clarissa Claudia\",\r\n                \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n            },\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n                \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"city\": \"Bangkok\",\r\n            \"detail\": \"ถ.กรุงเกษม บางขุนพรหม พระนคร กรุงเทพมหานคร\",\r\n            \"googleMap\": {}\r\n        }\r\n    }"
+				},
+				{
+					"name": "List All Room",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{napzz-backend}}/api/rooms",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"rooms"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"roomId\": \"1\",\r\n        \"roomName\": \"หอธวัชล้ำฟ้า Phuket\",\r\n        \"description\": \"Drawing its design theme from the classic Sino-Portuguese architecture that characterises Phuket Town, Centara Grand Beach Resort Phuket is set directly on the sands at Karon Beach, backed by a green hill, and grouped around its own water park.  The resort offers a memorable holiday experience for everyone: couples and families will love the exhilarating leisure activities, the water sports, and of course the water park, and corporate and incentive groups have fine meeting facilities.\",\r\n        \"images\": [\r\n            {\r\n                \"imageId\": \"1\",\r\n                \"url\": \"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768\"\r\n            },\r\n            {\r\n                \"imageId\": \"2\",\r\n                \"url\": \"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg\"\r\n            }\r\n        ],\r\n        \"price\": 2500,\r\n        \"contractType\": \"monthly\",\r\n        \"features\": [\r\n            {\r\n                \"landmarkId\": \"1\",\r\n                \"landmark\": \"บริการขนส่งสาธารณะในระยะ 400 เมตร\"\r\n            },\r\n            {\r\n                \"landmarkId\": \"2\",\r\n                \"landmark\": \"Wifi Free Whole Apartment\"\r\n            },\r\n            {\r\n                \"landmarkId\": \"3\",\r\n                \"landmark\": \"Gym Maxxing\"\r\n            }\r\n        ],\r\n        \"facilities\": [\r\n            {\r\n                \"facilityId\": \"1\",\r\n                \"facility\": \"Two Bed\"\r\n            },\r\n            {\r\n                \"facilityId\": \"2\",\r\n                \"facility\": \"Elagant Vantage\"\r\n            },\r\n            {\r\n                \"facilityId\": \"3\",\r\n                \"facility\": \"No Smoking\"\r\n            },\r\n            {\r\n                \"facilityId\": \"4\",\r\n                \"facility\": \"Air Conditioning\"\r\n            }\r\n        ],\r\n        \"review\": [\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"Clarissa Claudia\",\r\n                \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n            },\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n                \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"city\": \"Phuket\",\r\n            \"detail\": \"30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150\",\r\n            \"googleMap\": {}\r\n        }\r\n    },\r\n    \r\n    {\r\n        \"roomId\": \"2\",\r\n        \"roomName\": \"หอพักหลับสบาย\",\r\n        \"description\": \"ก่อตั้งในเขตพระนครตั้งแต่ พศ. 2510 โดยมีหัวหน้าครอบครัวเป็นอากงทิตงทั้งและอาม้าซี้อิม เป็นผู้ดูแลกิจกรรมความสะอาด\",\r\n        \"images\": [\r\n            {\r\n                \"imageId\": \"3\",\r\n                \"url\": \"https://pix6.agoda.net/hotelImages/1120240/-1/f914589d5858fd03a63c3a5b65f12dfe.jpg?s=1024x768\"\r\n            },\r\n            {\r\n                \"imageId\": \"4\",\r\n                \"url\": \"https://q-xx.bstatic.com/xdata/images/hotel/840x460/253802365.jpg?k=7ca87e6659b5d5e039e56890ce13cbd5db96f57bad4235eebcdcc930fc134725&o=\"\r\n            }\r\n        ],\r\n        \"price\": 1800,\r\n        \"contractType\": \"monthly\",\r\n        \"features\": [\r\n            {\r\n                \"landmarkId\": \"1\",\r\n                \"landmark\": \"บริการขนส่งสาธารณะในระยะ 200 เมตร\"\r\n            },\r\n            {\r\n                \"landmarkId\": \"2\",\r\n                \"landmark\": \"Wifi Free Whole Apartment\"\r\n            },\r\n        ],\r\n        \"facilities\": [\r\n            {\r\n                \"facilityId\": \"1\",\r\n                \"facility\": \"Two Bed\"\r\n            },\r\n            {\r\n                \"facilityId\": \"3\",\r\n                \"facility\": \"No Smoking\"\r\n            },\r\n            {\r\n                \"facilityId\": \"4\",\r\n                \"facility\": \"Air Conditioning\"\r\n            }\r\n        ],\r\n        \"review\": [\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"Clarissa Claudia\",\r\n                \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n            },\r\n            {\r\n                \"rating\": 4.5,\r\n                \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n                \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n            }\r\n        ],\r\n        \"location\": {\r\n            \"city\": \"Bangkok\",\r\n            \"detail\": \"ถ.กรุงเกษม บางขุนพรหม พระนคร กรุงเทพมหานคร\",\r\n            \"googleMap\": {}\r\n        }\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Reserve Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room/reserve",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room",
+						"reserve"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		}
+	]
+}
