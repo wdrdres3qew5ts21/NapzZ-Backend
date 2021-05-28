@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.*;
 
 import com.napzz.dto.OAuthPrincial;
@@ -23,7 +24,6 @@ import com.napzz.service.RoomService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
-
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -33,27 +33,28 @@ public class ApartmentController {
     @Inject
     ApartmentService apartmentService;
 
-
     @Path("apartment/{apartmentId}")
     @GET
-    public Response findByAprtmentId(@PathParam("apartmentId") int apartmentId){
+    public Response findByAprtmentId(@PathParam("apartmentId") int apartmentId) {
         Optional<Apartment> room = apartmentService.findByAprtmentId(apartmentId);
         return Response.ok(room).build();
     }
 
     @Path("apartments")
     @GET
-    public Response listApartment(){
-        List<Apartment> aprtmentList = apartmentService.listApartment();
+    public Response listApartment(
+        @QueryParam("name") String apartmentName, 
+        @QueryParam("province") String province
+    ){
+        List<Apartment> aprtmentList = apartmentService.listApartment(apartmentName,province);
         return Response.ok(aprtmentList).build();
     }
- 
 
     @Path("apartment")
     @POST
-    public Response createApartment(@RequestBody Apartment apartment){
+    public Response createApartment(@RequestBody Apartment apartment) {
         Apartment createApartment = apartmentService.createApartment(apartment);
         return Response.ok(createApartment).build();
     }
-    
+
 }
