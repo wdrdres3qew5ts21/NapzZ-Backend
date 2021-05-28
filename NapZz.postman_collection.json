@@ -6,7 +6,86 @@
 	},
 	"item": [
 		{
+			"name": "ผู้ใช้บริการสมัครสมาชิกผ่าน email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\",\r\n    \"firstname\": \"Lin\",\r\n    \"lastname\": \"Jingyun\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/register/customer/email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"register",
+						"customer",
+						"email"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
 			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -72,9 +151,33 @@
 			]
 		},
 		{
-			"name": "ผู้ใช้บริการสมัครสมาชิก email Copy",
+			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -86,15 +189,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{napzz-backend}}/api/register/customer/email",
+					"raw": "{{napzz-backend}}/api/roles-allowed",
 					"host": [
 						"{{napzz-backend}}"
 					],
 					"path": [
 						"api",
-						"register",
-						"customer",
-						"email"
+						"roles-allowed"
 					]
 				}
 			},
