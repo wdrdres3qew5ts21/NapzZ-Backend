@@ -1,5 +1,6 @@
 package com.napzz.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,6 +72,14 @@ public class RoomController {
     public Response listRoom(){
         List<Room> roomList = roomService.listRoom();
         return Response.ok(roomList).build();
+    }
+
+    @Path("room/{roomId}")
+    @POST
+    public Response deleteRoomById(@PathParam("roomId") int roomId){
+        HashMap<String, String> response = new HashMap();
+        roomService.deleteRoomById(roomId);
+        return Response.ok(response).build();
     }
 
  

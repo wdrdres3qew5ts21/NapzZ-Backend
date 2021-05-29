@@ -17,6 +17,10 @@ mvn quarkus:dev -D"MAILGUN_KEY=place-mailgun-key-here" -D"MAILGUN_DOMAIN=place-m
 
 oc create cm napzz-config --from-file=application.properties
 
+oc create dc --image=docker.io/phpmyadmin/phpmyadmin:5.1.0 phpmyadmin
+
+oc set env dc/phpmyadmin --env="PMA_HOST=mysql"
+
 ```
 ไฟล์ที่อ่านจาก application.properties ถ้าจะใช้ relative path ก็ต้องวางใน directories resources ด้วยไม่อย่างนั้นจะมองไม่เห็น
 

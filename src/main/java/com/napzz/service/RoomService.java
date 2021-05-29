@@ -1,11 +1,13 @@
 package com.napzz.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.core.Response;
 
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.Image;
@@ -109,6 +111,12 @@ public class RoomService {
         System.out.println("===================");
         System.out.println(room1);
         return room1;
+    }
+
+    public void deleteRoomById(int roomId) {
+        HashMap<String, String> response = new HashMap();
+        response.put("message", "Delete Successfull");
+        roomRepository.deleteById(roomId);
     }
     
 }
