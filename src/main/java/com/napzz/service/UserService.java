@@ -38,16 +38,18 @@ public class UserService {
 
     public User login(User loginRequest) {
         User foundedUsername = userRepository.findByUsername(loginRequest.getUsername());
-        if (foundedUsername.getPassword().equals(loginRequest.getPassword())) {
-            // เจอ user แล้วต้องส่ง Email ไปหาผู้ใช้คนนั้น
-            // 1. Generate Token สั้นๆก่อน
-            String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(6);
-            foundedUsername.setEmailToken(randomAlphanumeric);
-            // 2. บันทึก Token นั้นลง Table SecurityAuthentication ใน Field Security
-            User emailLoginResponse = userRepository.save(foundedUsername);
-            // 3. ส่งเมล์ที่มีข้อมูลเกี่ยวกับ Fields นั้นออกไปหา User ที่ Login ผ่าน HashMap
-            this.sentMailTwoFactorAuthentication(emailLoginResponse.getEmail(), emailLoginResponse.getEmailToken());
-            return emailLoginResponse;
+        if (foundedUsername != null) {
+            if (foundedUsername.getPassword().equals(loginRequest.getPassword())) {
+                // เจอ user แล้วต้องส่ง Email ไปหาผู้ใช้คนนั้น
+                // 1. Generate Token สั้นๆก่อน
+                String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(6);
+                foundedUsername.setEmailToken(randomAlphanumeric);
+                // 2. บันทึก Token นั้นลง Table SecurityAuthentication ใน Field Security
+                User emailLoginResponse = userRepository.save(foundedUsername);
+                // 3. ส่งเมล์ที่มีข้อมูลเกี่ยวกับ Fields นั้นออกไปหา User ที่ Login ผ่าน HashMap
+                this.sentMailTwoFactorAuthentication(emailLoginResponse.getEmail(), emailLoginResponse.getEmailToken());
+                return emailLoginResponse;
+            }
         }
         return null;
     }
