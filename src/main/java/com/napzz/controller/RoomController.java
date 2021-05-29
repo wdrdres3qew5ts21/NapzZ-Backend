@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -22,7 +23,11 @@ import com.napzz.entity.room.Room;
 import com.napzz.service.RoomService;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+
+import io.smallrye.jwt.auth.principal.JWTParser;
+import io.smallrye.jwt.auth.principal.ParseException;
 
 
 @Path("/api")
@@ -34,6 +39,11 @@ public class RoomController {
     @Inject
     RoomService roomService;
 
+    @Inject
+    JsonWebToken jwt;
+
+    @Inject
+    JWTParser jwtParser;
 
     @Path("init")
     @GET
@@ -56,10 +66,18 @@ public class RoomController {
     }
 
     @Path("room")
+    @RolesAllowed({"APARTMENT_OWNER"})
     @POST
     public Response createRoom(@RequestBody Room room){
-        roomService.createRoom(room);
-        return Response.ok(room).build();
+        try {
+            jwtParser.parse(jwt.getRawToken());
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Integer apartmentOwnerId = Integer.parseInt(jwt.getClaim("USER_ID").toString());
+        Room createdRoom = roomService.createRoom(apartmentOwnerId, room);
+        return Response.ok(createdRoom).build();
     }
 
     @Path("room/{roomId}")

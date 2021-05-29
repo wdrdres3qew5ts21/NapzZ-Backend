@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
+import com.napzz.entity.Apartment;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.Image;
 import com.napzz.entity.asset.LandmarkFeature;
@@ -16,6 +17,7 @@ import com.napzz.entity.location.Location;
 import com.napzz.entity.review.Review;
 import com.napzz.entity.room.ContractType;
 import com.napzz.entity.room.Room;
+import com.napzz.repository.ApartmentRepository;
 import com.napzz.repository.ContractTypeRepository;
 import com.napzz.repository.FacilityFeatureRepository;
 import com.napzz.repository.LandmarkFeatureRepository;
@@ -36,7 +38,11 @@ public class RoomService {
     @Inject 
     private ContractTypeRepository contractTypeRepository;
 
-    public Room createRoom(Room room) {
+    @Inject 
+    private ApartmentRepository apartmentRepository;
+
+    public Room createRoom(Integer apartmentOwnerId, Room room) {
+        roomRepository.findById(room.getApartment().getApartmentId());
         return roomRepository.save(room);
     }
 
