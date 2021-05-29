@@ -7,8 +7,9 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/backend-jvm .
-#
+# docker build -f src/main/docker/Dockerfile.jvm -t quay.io/linxianer12/napzz-backend:1.0.0 .
+# docker push quay.io/linxianer12/napzz-backend:1.0.0 
+# oc new-app quay.io/linxianer12/napzz-backend:1.0.0 --as-deployment-config  --name napzz-backend 
 # Then run the container using:
 #
 # docker run -i --rm -p 8080:8080 quarkus/backend-jvm

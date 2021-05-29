@@ -773,6 +773,72 @@
 			]
 		},
 		{
+			"name": "ลบ Room 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room/2",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
 			"name": "สร้าง Facility ขนส่งใกล้ Copy",
 			"request": {
 				"method": "POST",
