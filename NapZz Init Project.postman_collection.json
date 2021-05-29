@@ -1,0 +1,906 @@
+{
+	"info": {
+		"_postman_id": "f4edb8a6-1d16-4a06-815c-4b1bd54eadf3",
+		"name": "NapZz Init Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ผู้ใช้บริการสมัครสมาชิกผ่าน email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\",\r\n    \"firstname\": \"Lin\",\r\n    \"lastname\": \"Jingyun\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/register/customer/email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"register",
+						"customer",
+						"email"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/user/login",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/roles-allowed",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"roles-allowed"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "check-header Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/check-all",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"check-all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Apartment 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apartmentId\": 1,\r\n    \"name\": \"หอธวัชล้ำฟ้า Phuket\",\r\n    \"description\": \"ห้องสตูดิโอ ค่าเช่าเริ่มต้น 6,000บาท ขนาด 25-35 ตรม. มีระเบียงทุกห้อง ภายในห้อง มีเตียงพร้อมที่นอนขนาด6ฟุต, ตู้เสื้อผ้าแบบ Built-in, โต๊ะเครื่องแป้ง, แอร์, เครื่องทำน้ำอุ่น, อ่างอาบน้ำ, บริการเคเบิ้ลทีวี, wi-fi,\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768\"\r\n        },\r\n        {\r\n            \"url\": \"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 400 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"คลองเตย\",\r\n        \"detail\": \"199 ถ. รัชดาภิเษก แขวง คลองเตย \",\r\n        \"province\": \"กรุงเทพ\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/apartment",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"apartment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Apartment 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apartmentId\": 2,\r\n    \"name\": \"เจริญทรัพย์\",\r\n    \"description\": \"อพาร์ทเมนท์ใกล้สถานีรถไฟฟ้าใต้ดินเพียง 200เมตรถึงMRTลาดพร้าว ตกแต่งสวยเฟอร์นิเจอร์บิ้วอิน พร้อมทีวีLCD32\\\" เดินทางสะดวก ความปลอดภัยเข้าออกด้วยระบบคีย์การ์ด รปภ.24ชั่วโมง กล้องวงจรปิด อินเตอร์เน็ตไร้สาย\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://www.hotelscombined.dk/himg/ca/5c/81/ice-55077-62978153_3XL-863601.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/dn9JmbyHvw0DTUWlpE8V9Z0K4lU=/1660x934/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/S4ZX2DV7BZDW5HW54OMMISE4Y4.jpg\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 100 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"อารีย์\",\r\n        \"detail\": \" 388 ถ. พหลโยธิน แขวง สามเสนใน\",\r\n        \"province\": \"กรุงเทพ\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/apartment",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"apartment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "เรียกดู Apartment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/apartments",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"apartments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "เรียกดู Apartment แบบ Filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/apartments?name=หอ",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"apartments"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "หอ"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง contract montly",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contractId\": 1,\r\n    \"contractType\": \"monthly\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/contract",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"contract"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง contract yearly",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contractId\": 2,\r\n    \"contractType\": \"yearly\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/contract",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"contract"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Room 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"apartment\": {\r\n        \"apartmentId\": 1\r\n    },\r\n    \"roomName\": \"ห้องสตูดิโอ 45 ตรม.\",\r\n    \"description\": \"ตกแต่งพร้อมเข้าอยู่ บิลอินตู้เสื้อผ้า เตียง โต็ะแต่งตัว แอร์ ทีวี ตู้เย็น เครื่องทำนํ้าอุ่น บริเวณเตรียมอาหารพร้อมซิงค์ล้างจาน จอดรถ1คันต่อห้องไม่คิดค่าบริการ มีรปภ 24 ชม. พร้อมลิฟท์โดยสาร\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-bedroom-ideas-stregis-08-1573683802.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/white-bedroom-jeannette-fristoe-1559156532.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 2500,\r\n    \"contractType\": {\r\n        \"contractId\": 1\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": \"1\",\r\n            \"facility\": \"Two Bed\"\r\n        },\r\n        {\r\n            \"facilityId\": \"2\",\r\n            \"facility\": \"Elagant Vantage\"\r\n        },\r\n        {\r\n            \"facilityId\": \"3\",\r\n            \"facility\": \"No Smoking\"\r\n        },\r\n        {\r\n            \"facilityId\": \"4\",\r\n            \"facility\": \"Air Conditioning\"\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Room 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"apartment\": {\r\n        \"apartmentId\": 2\r\n    },\r\n    \"roomName\": \"ห้องลอฟต์ loft กว้างพรีเมี่ยม\",\r\n    \"description\": \"ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": 2\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/room",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"room"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		}
+	]
+}
