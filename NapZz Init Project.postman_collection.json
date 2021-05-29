@@ -140,6 +140,73 @@
 			]
 		},
 		{
+			"name": "ผู้ให้บริการขอพักสมัครสมาชิก Panuwat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"panuwat33586@gmail.com\",\r\n    \"username\": \"panuwat33586@gmail.com\",\r\n    \"password\": \"UltimateGod999\",\r\n    \"firstname\": \"Panuwat\",\r\n    \"lastname\": \"Chiawchansilp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/register/aprtment-owner/email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"register",
+						"aprtment-owner",
+						"email"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
 			"name": "ผู้ใช้บริการ Login เข้าสู่ระบบ",
 			"event": [
 				{
@@ -568,6 +635,81 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"apartmentId\": 2,\r\n    \"name\": \"เจริญทรัพย์\",\r\n    \"description\": \"อพาร์ทเมนท์ใกล้สถานีรถไฟฟ้าใต้ดินเพียง 200เมตรถึงMRTลาดพร้าว ตกแต่งสวยเฟอร์นิเจอร์บิ้วอิน พร้อมทีวีLCD32\\\" เดินทางสะดวก ความปลอดภัยเข้าออกด้วยระบบคีย์การ์ด รปภ.24ชั่วโมง กล้องวงจรปิด อินเตอร์เน็ตไร้สาย\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://www.hotelscombined.dk/himg/ca/5c/81/ice-55077-62978153_3XL-863601.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/dn9JmbyHvw0DTUWlpE8V9Z0K4lU=/1660x934/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/S4ZX2DV7BZDW5HW54OMMISE4Y4.jpg\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 100 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"อารีย์\",\r\n        \"detail\": \" 388 ถ. พหลโยธิน แขวง สามเสนใน\",\r\n        \"province\": \"กรุงเทพ\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/apartment",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"apartment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "สร้าง Apartment 3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apartmentId\": 3,\r\n    \"name\": \"เจริญทรัพย์ 3333\",\r\n    \"description\": \"อพาร์ทเมนท์ใกล้สถานีรถไฟฟ้าใต้ดินเพียง 200เมตรถึงMRTลาดพร้าว ตกแต่งสวยเฟอร์นิเจอร์บิ้วอิน พร้อมทีวีLCD32\\\" เดินทางสะดวก ความปลอดภัยเข้าออกด้วยระบบคีย์การ์ด รปภ.24ชั่วโมง กล้องวงจรปิด อินเตอร์เน็ตไร้สาย\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://www.hotelscombined.dk/himg/ca/5c/81/ice-55077-62978153_3XL-863601.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://dmn-dallas-news-prod.cdn.arcpublishing.com/resizer/dn9JmbyHvw0DTUWlpE8V9Z0K4lU=/1660x934/smart/filters:no_upscale()/cloudfront-us-east-1.images.arcpublishing.com/dmn/S4ZX2DV7BZDW5HW54OMMISE4Y4.jpg\"\r\n        }\r\n    ],\r\n    \"features\": [\r\n        {\r\n            \"landmarkId\": \"1\",\r\n            \"landmark\": \"บริการขนส่งสาธารณะในระยะ 100 เมตร\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"2\",\r\n            \"landmark\": \"Wifi Free Whole Apartment\"\r\n        },\r\n        {\r\n            \"landmarkId\": \"3\",\r\n            \"landmark\": \"Gym Maxxing\"\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"city\": \"อารีย์\",\r\n        \"detail\": \" 388 ถ. พหลโยธิน แขวง สามเสนใน\",\r\n        \"province\": \"กรุงเทพ\",\r\n        \"googleMap\": {}\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1250,86 +1392,6 @@
 			]
 		},
 		{
-			"name": "เจ้าของหอพัก Login Two Factor ยืนยันซ้ำอีกครั้ง",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);\r",
-							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"emailToken\": \"olJzG5\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{napzz-backend}}/api/user/login/twofactor/verify-email",
-					"host": [
-						"{{napzz-backend}}"
-					],
-					"path": [
-						"api",
-						"user",
-						"login",
-						"twofactor",
-						"verify-email"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Reserve Room",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt_token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{napzz-backend}}/api/room/reserve",
-							"host": [
-								"{{napzz-backend}}"
-							],
-							"path": [
-								"api",
-								"room",
-								"reserve"
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": [],
-					"cookie": [],
-					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
-				}
-			]
-		},
-		{
 			"name": "เจ้าของหอพัก Login",
 			"event": [
 				{
@@ -1405,6 +1467,86 @@
 					"cookie": [],
 					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
 				},
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "เจ้าของหอพัก Login Two Factor ยืนยันซ้ำอีกครั้ง",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailToken\": \"W3QIuG\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/user/login/twofactor/verify-email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login",
+						"twofactor",
+						"verify-email"
+					]
+				}
+			},
+			"response": [
 				{
 					"name": "Reserve Room",
 					"originalRequest": {
