@@ -9,6 +9,7 @@ import javax.validation.constraints.Null;
 
 import com.napzz.entity.Apartment;
 import com.napzz.entity.room.Room;
+import com.napzz.entity.user.ApartmentOwner;
 import com.napzz.repository.ApartmentRepository;
 
 @ApplicationScoped
@@ -41,9 +42,16 @@ public class ApartmentService {
         return foundedApartment;
     }
 
-    public Apartment createApartment(Apartment apartment) {
+    public Apartment createApartment(Integer apartmentOwnerId, Apartment apartment) {
+        ApartmentOwner apartmentOwner = new ApartmentOwner();
+        apartmentOwner.setUserId(apartmentOwnerId);
+        apartment.setApartmentOwner(apartmentOwner);
         Apartment savedAprtment = apartmentRepository.save(apartment);
         return savedAprtment;
+    }
+
+    public List<Apartment> findByApartmentOwnerUserId(int apartmentOwnerId) {
+        return apartmentRepository.findByApartmentOwnerApartmentOwnerId(apartmentOwnerId);
     }
 
 }

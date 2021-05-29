@@ -1,5 +1,6 @@
 package com.napzz.entity.user;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +11,20 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "apartmentOwnerId")
 public class ApartmentOwner extends User{
 
+    @Column(name="apartmentOwnerId",insertable = false,updatable = false)
+    private int apartmentOwnerId;
+
     public ApartmentOwner(){
         this.setUsertype("APARTMENT_OWNER");
+    }
+
+
+    public int getApartmentOwnerId() {
+        return apartmentOwnerId;
+    }
+
+    public void setApartmentOwnerId(int apartmentOwnerId) {
+        this.apartmentOwnerId = apartmentOwnerId;
     }
 
     private String apartmentOwnerVerifyStatus;

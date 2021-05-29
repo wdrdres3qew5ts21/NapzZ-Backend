@@ -18,4 +18,10 @@ public interface ApartmentRepository extends JpaRepository<Apartment, Integer> {
 
     List<Apartment> findByDescriptionContains(String apartmentName);
 
+   // List<Apartment> findByApartmentOwnerApartmentOwnerId(String apartmentOwnerId);
+
+  // List<Apartment> findByApartmentOwnerId(String apartmentOwnerId);
+
+   List<Apartment> findByApartmentOwnerApartmentOwnerId(int apartmentOwnerId);
+
 }
