@@ -108,9 +108,7 @@ public class UserController {
             return Response.status(401).entity(response).build();
         }
         // Login สำเร็จไม่เป็น null
-        String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
-        response.put("jwtToken", generateJWTToken);
-        return Response.ok(response).build();
+        return Response.ok(loginResponse).build();
     }
 
     @POST

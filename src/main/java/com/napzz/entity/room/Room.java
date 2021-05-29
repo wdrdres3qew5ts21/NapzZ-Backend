@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonFormat.Feature;
 import com.napzz.entity.Apartment;
 import com.napzz.entity.asset.FacilityFeature;
@@ -52,6 +53,7 @@ public class Room {
     private Location location;
 
     @OneToOne
+    @JsonIgnoreProperties("roomList")
     private Apartment apartment;
 
     public Room(){

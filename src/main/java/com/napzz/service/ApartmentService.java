@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.validation.constraints.Null;
 
 import com.napzz.entity.Apartment;
+import com.napzz.entity.room.Room;
 import com.napzz.repository.ApartmentRepository;
-
 
 @ApplicationScoped
 public class ApartmentService {
@@ -18,7 +18,11 @@ public class ApartmentService {
     private ApartmentRepository apartmentRepository;
 
     public Optional<Apartment> findByAprtmentId(int apartmentId) {
-        return apartmentRepository.findById(apartmentId);
+         Optional<Apartment> foundedRoom = apartmentRepository.findById(apartmentId);
+         List<Room> roomList = foundedRoom.get().getRoomList();
+         System.out.println("======================");
+         System.out.println(roomList);
+        return foundedRoom;
     }
 
     public List<Apartment> listApartment(String apartmentName, String province) {

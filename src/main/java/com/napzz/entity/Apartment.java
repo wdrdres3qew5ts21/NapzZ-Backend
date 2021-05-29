@@ -6,17 +6,19 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.napzz.entity.asset.Image;
 import com.napzz.entity.location.Location;
 import com.napzz.entity.room.Room;
 
-import org.hibernate.annotations.GeneratorType;
+
 
 @Entity
 public class Apartment {
@@ -36,7 +38,8 @@ public class Apartment {
     @Embedded
     private Location location;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "apartment")
+    //@JsonIgnoreProperties("apartment")
     private List<Room> roomList;
 
     public int getApartmentId() {
