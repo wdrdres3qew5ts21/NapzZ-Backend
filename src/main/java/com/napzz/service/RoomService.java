@@ -44,6 +44,14 @@ public class RoomService {
         return roomRepository.findById(roomId);
     }
 
+    public List<FacilityFeature> listFacility() {
+        return facilityFeatureRepository.findAll();
+    }
+
+    public List<ContractType> listContractType() {
+        return contractTypeRepository.findAll();
+    }
+
     public List<Room> listRoom() {
         return roomRepository.findAll();
     }

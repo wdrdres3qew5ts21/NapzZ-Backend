@@ -90,6 +90,18 @@ public class RoomController {
         return Response.ok(createContractType).build();
     }
 
- 
+    @Path("contract-types")
+    @GET
+    public Response listContractType(){
+         List<ContractType> listContractType = roomService.listContractType();
+        return Response.ok(listContractType).build();
+    }
+
+    @Path("facilities")
+    @GET
+    public Response listFacilties(){
+         List<FacilityFeature> listFacility = roomService.listFacility();
+        return Response.ok(listFacility).build();
+    }
     
 }
