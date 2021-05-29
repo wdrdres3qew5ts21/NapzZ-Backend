@@ -21,6 +21,7 @@ import com.napzz.entity.room.ContractType;
 import com.napzz.entity.room.Room;
 import com.napzz.service.RoomService;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 
@@ -102,6 +103,23 @@ public class RoomController {
     public Response listFacilties(){
          List<FacilityFeature> listFacility = roomService.listFacility();
         return Response.ok(listFacility).build();
+    }
+
+    @ConfigProperty(name="quarkus.http.cors")
+    private String corsEnable;
+    @ConfigProperty(name="quarkus.http.cors.origins")
+    private String corsOrigin;
+    @ConfigProperty(name="quarkus.http.cors.methods")
+    private String corsMethods;
+
+    @Path("status")
+    @GET
+    public Response status(){
+        HashMap<String, String> response = new HashMap();
+        response.put("quarkus.http.cors", corsEnable);
+        response.put("quarkus.http.cors.origins", corsOrigin);
+        response.put("quarkus.http.cors.methods", corsMethods);
+        return Response.ok(response).build();
     }
     
 }
