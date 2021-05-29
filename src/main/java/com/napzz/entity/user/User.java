@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -33,6 +34,8 @@ public class User {
 
     @Column(nullable = false)
     private String lastname;
+
+    private String emailToken;
 
     public String getFirstname() {
         return firstname;
@@ -88,6 +91,14 @@ public class User {
 
     public void setUsertype(String usertype) {
         this.usertype = usertype;
+    }
+
+    public String getEmailToken() {
+        return emailToken;
+    }
+
+    public void setEmailToken(String emailToken) {
+        this.emailToken = emailToken;
     }
 
     @Override

@@ -649,7 +649,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"contractId\": 1,\r\n    \"contractType\": \"monthly\"\r\n}",
+					"raw": "{\r\n    \"contractId\": 1,\r\n    \"contract\": \"monthly\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -714,7 +714,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"contractId\": 2,\r\n    \"contractType\": \"yearly\"\r\n}",
+					"raw": "{\r\n    \"contractId\": 2,\r\n    \"contract\": \"yearly\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

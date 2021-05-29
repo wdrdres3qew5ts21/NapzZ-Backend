@@ -28,12 +28,11 @@ public class MailService {
 		return "Basic " + encodedString;
 	}
 
-	public JsonNode sendMail() {
-		String to = "wdrdres3qew5ts21@gmail.com";
+	public JsonNode sendMail(String recipient) {
 		String subject = "Napzz Authentication";
 		String text = "Confirm Reservation Room Key was: 551462";
 		JsonNode httpPostMailMessage = null;
-		httpPostMailMessage = mailGunEndpointInterface.httpPostMailMessage(lookupAuth(), MAILGUN_SENDER, to, subject, text);
+		httpPostMailMessage = mailGunEndpointInterface.httpPostMailMessage(lookupAuth(), MAILGUN_SENDER, recipient, subject, text);
 		System.out.println(httpPostMailMessage);
 		return httpPostMailMessage;
 	}

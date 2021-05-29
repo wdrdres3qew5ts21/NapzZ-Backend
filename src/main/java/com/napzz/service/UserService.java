@@ -1,5 +1,7 @@
 package com.napzz.service;
 
+import java.util.Random;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -12,6 +14,8 @@ import com.napzz.repository.ApartmentOwnerRepository;
 import com.napzz.repository.CustomerRepository;
 import com.napzz.repository.UserRepository;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 @ApplicationScoped
 public class UserService {
 
@@ -21,22 +25,30 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
-    @Inject 
+    @Inject
     private CustomerRepository customerRepository;
 
-    @Inject 
+    @Inject
     private ApartmentOwnerRepository apartmentOwnerRepository;
 
-    public JsonNode sentMail() {
-        return mailService.sendMail();
+    public JsonNode sentMail(String recipient) {
+        recipient = "wdrdres3qew5ts21@gmail.com";
+        return mailService.sendMail(recipient);
     }
 
     public User login(User loginRequest) {
-         User foundedUsername = userRepository.findByUsername(loginRequest.getUsername());
-         if(foundedUsername.getPassword().equals(loginRequest.getPassword())){
+        User foundedUsername = userRepository.findByUsername(loginRequest.getUsername());
+        if (foundedUsername.getPassword().equals(loginRequest.getPassword())) {
+            // เจอ user แล้วต้องส่ง Email ไปหาผู้ใช้คนนั้น
+            // 1. Generate Token สั้นๆก่อน
+            String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(6);
+            foundedUsername.setEmailToken(randomAlphanumeric);
+            // 2. บันทึก Token นั้นลง Table SecurityAuthentication ใน Field Security
+            userRepository.save(foundedUsername);
+            // 3. ส่งเมล์ที่มีข้อมูลเกี่ยวกับ Fields นั้นออกไปหา User ที่ Login ผ่าน HashMap
             return foundedUsername;
-         }
-         return null;
+        }
+        return null;
     }
 
     public JsonNode registerWithEmail(User registerRequest) {
@@ -52,6 +64,8 @@ public class UserService {
         return null;
     }
 
-    
+    public void verifyEmailToken() {
+
+    }
 
 }

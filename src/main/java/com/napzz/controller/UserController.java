@@ -95,7 +95,7 @@ public class UserController {
     @GET
     @Path("mail")
     public JsonNode sentMail() {
-        return this.userService.sentMail();
+        return this.userService.sentMail("");
     }
 
     @POST
@@ -107,10 +107,21 @@ public class UserController {
             response.put("errorMessage", "AythenticationFailed");
             return Response.status(401).entity(response).build();
         }
+        // Login สำเร็จไม่เป็น null
         String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
         response.put("jwtToken", generateJWTToken);
         return Response.ok(response).build();
+    }
 
+    @POST
+    @Path("user/verify-email")
+    public Response verifyEmailToken(@RequestBody User emailVerifyRequest) {
+        User loginResponse = this.userService.login(emailVerifyRequest);
+        HashMap<String, String> response = new HashMap();
+        userService.verifyEmailToken();
+        String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
+        response.put("jwtToken", generateJWTToken);
+        return Response.ok(response).build();
     }
 
     @POST
