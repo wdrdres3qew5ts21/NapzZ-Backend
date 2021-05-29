@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.napzz.dto.authen.LoginRequest;
+import com.napzz.dto.authen.EmailLoginResponse;
 import com.napzz.entity.user.ApartmentOwner;
 import com.napzz.entity.user.Customer;
 import com.napzz.entity.user.User;
@@ -31,9 +31,8 @@ public class UserService {
     @Inject
     private ApartmentOwnerRepository apartmentOwnerRepository;
 
-    public JsonNode sentMail(String recipient) {
-        recipient = "wdrdres3qew5ts21@gmail.com";
-        return mailService.sendMail(recipient);
+    public JsonNode sentMailTwoFactorAuthentication(String recipient,String emailToken) {
+        return mailService.sentMailTwoFactorAuthentication(recipient,emailToken);
     }
 
     public User login(User loginRequest) {
@@ -44,9 +43,10 @@ public class UserService {
             String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(6);
             foundedUsername.setEmailToken(randomAlphanumeric);
             // 2. บันทึก Token นั้นลง Table SecurityAuthentication ใน Field Security
-            userRepository.save(foundedUsername);
+            User emailLoginResponse = userRepository.save(foundedUsername);
             // 3. ส่งเมล์ที่มีข้อมูลเกี่ยวกับ Fields นั้นออกไปหา User ที่ Login ผ่าน HashMap
-            return foundedUsername;
+            this.sentMailTwoFactorAuthentication(emailLoginResponse.getEmail(),emailLoginResponse.getEmailToken());
+            return emailLoginResponse;
         }
         return null;
     }

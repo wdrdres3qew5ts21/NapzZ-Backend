@@ -21,7 +21,7 @@ import javax.ws.rs.core.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.napzz.dto.OAuthPrincial;
-import com.napzz.dto.authen.LoginRequest;
+import com.napzz.dto.authen.EmailLoginResponse;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;
 import com.napzz.entity.room.Room;
@@ -92,23 +92,27 @@ public class UserController {
         return jwt.getClaimNames() != null;
     }
 
-    @GET
-    @Path("mail")
-    public JsonNode sentMail() {
-        return this.userService.sentMail("");
-    }
+    // @GET
+    // @Path("mail")
+    // public JsonNode sentMail() {
+    //     return this.userService.sentMail("");
+    // }
 
     @POST
     @Path("user/login")
     public Response login(@RequestBody User LoginRequest) {
         User loginResponse = this.userService.login(LoginRequest);
-        HashMap<String, String> response = new HashMap();
+        HashMap<String, Object> response = new HashMap();
         if (loginResponse == null) {
             response.put("errorMessage", "AythenticationFailed");
             return Response.status(401).entity(response).build();
         }
         // Login สำเร็จไม่เป็น null
-        return Response.ok(loginResponse).build();
+        response.put("userId", loginResponse.getUserId());
+        response.put("username", loginResponse.getUsername());
+        response.put("emailToken", loginResponse.getEmailToken());
+        response.put("message", "Please Check Youe Junk Email and using Email Token for verify");
+        return Response.ok(response).build();
     }
 
     @POST
@@ -117,8 +121,8 @@ public class UserController {
         User loginResponse = this.userService.login(emailVerifyRequest);
         HashMap<String, String> response = new HashMap();
         userService.verifyEmailToken();
-        String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
-        response.put("jwtToken", generateJWTToken);
+        //String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
+        //response.put("jwtToken", generateJWTToken);
         return Response.ok(response).build();
     }
 
