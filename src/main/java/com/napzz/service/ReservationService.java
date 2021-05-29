@@ -8,7 +8,10 @@ import javax.inject.Inject;
 
 import com.napzz.controller.ReservationController;
 import com.napzz.entity.reservation.Reservation;
+import com.napzz.entity.user.Customer;
 import com.napzz.repository.ReservationRepository;
+
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @ApplicationScoped
 public class ReservationService {
@@ -32,7 +35,11 @@ public class ReservationService {
         }
     }
 
-    public Reservation reserveRoom(Reservation reservationRequest) {
+    public Reservation reserveRoom(JsonWebToken jwtToken,Reservation reservationRequest) {
+        Integer userId = Integer.parseInt(jwtToken.getClaim("USER_ID").toString());
+        Customer customer = new Customer();
+        customer.setUserId(userId);
+        reservationRequest.setUser(customer);
         Reservation insertReservation = reservationRepository.save(reservationRequest); 
         return insertReservation;
     }

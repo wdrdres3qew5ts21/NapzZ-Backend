@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,17 +18,27 @@ import javax.ws.rs.core.*;
 import com.napzz.entity.reservation.Reservation;
 import com.napzz.service.ReservationService;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+
+import io.smallrye.jwt.auth.principal.JWTParser;
+import io.smallrye.jwt.auth.principal.ParseException;
 
 
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@ApplicationScoped
+@RequestScoped
 public class ReservationController{
 
     @Inject
     ReservationService reservationService;
+
+    @Inject
+    JsonWebToken jwt;
+
+    @Inject
+    JWTParser jwtParser;
 
     @Path("upload-evident")
     @POST
@@ -48,7 +59,13 @@ public class ReservationController{
     @Path("reserve-room")
     @POST
     public Response reserveRoom(@RequestBody Reservation reservationRequest) {
-        Reservation reserveRoom = reservationService.reserveRoom(reservationRequest);
+        try {
+            jwtParser.parse(jwt.getRawToken());
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Reservation reserveRoom = reservationService.reserveRoom(jwt,reservationRequest);
         return Response.ok(reserveRoom).build();
     }
 
