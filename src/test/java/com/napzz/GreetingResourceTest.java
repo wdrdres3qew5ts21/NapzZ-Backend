@@ -31,7 +31,7 @@ public class GreetingResourceTest {
     @Inject
     RoomRepository roomRepository;
 
-    @BeforeAll
+   // @BeforeAll
     public static void setup() {
         ContractType monthlyContract = new ContractType(1, "monthly");
         ContractType yearlyContract = new ContractType(2, "yearly");
@@ -77,11 +77,11 @@ public class GreetingResourceTest {
                 facilityRoom1, reviews, location);
 
         RoomRepository mock = Mockito.mock(RoomRepository.class);
-        // Mockito.when(mock.findById(1)).thenReturn();
+        // Mockito.when(mock.findById(1)).thenReturn(value);
         // QuarkusMock.installMockForType(mock, MockableBean1.class);
     }
 
-    @Test
+  //  @Test
     public void testHelloEndpoint() {
 
         int roomId = 1;

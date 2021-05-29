@@ -10,15 +10,18 @@ release.properties
 .classpath
 .settings/
 
-src/main/resources/application.properties
+#src/main/resources/application.properties
+*.properties
 # IntelliJ
 .idea
 *.ipr
 *.iml
 *.iws
-*.pem
+# src/main/resources/*.pem
 # NetBeans
 nb-configuration.xml
+
+
 
 # Visual Studio Code
 .vscode

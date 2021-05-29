@@ -12,6 +12,11 @@ openssl rsa -pubout -in rsaPrivateKey.pem -out publicKey.pem
 openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -out privateKey.pem
 
 mvn quarkus:dev -D"mp.jwt.verify.publickey.location=publicKey.pem" -D"smallrye.jwt.sign.key-location=privateKey.pem"
+
+mvn quarkus:dev -D"MAILGUN_KEY=place-mailgun-key-here" -D"MAILGUN_DOMAIN=place-mail-gun-domain-here"
+
+oc create cm napzz-config --from-file=application.properties
+
 ```
 ไฟล์ที่อ่านจาก application.properties ถ้าจะใช้ relative path ก็ต้องวางใน directories resources ด้วยไม่อย่างนั้นจะมองไม่เห็น
 
