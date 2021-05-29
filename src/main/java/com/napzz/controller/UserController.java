@@ -92,12 +92,6 @@ public class UserController {
         return jwt.getClaimNames() != null;
     }
 
-    // @GET
-    // @Path("mail")
-    // public JsonNode sentMail() {
-    // return this.userService.sentMail("");
-    // }
-
     @POST
     @Path("user/login")
     public Response login(@RequestBody User LoginRequest) {
@@ -135,8 +129,8 @@ public class UserController {
 
     @POST
     @Path("register/aprtment-owner/email")
-    public JsonNode aprtmentOwnerRegister(@RequestBody ApartmentOwner aprtmentOwnerRegisterRequest) {
-        return this.userService.aprtmentOwnerRegister(aprtmentOwnerRegisterRequest);
+    public ApartmentOwner aprtmentOwnerRegister(@RequestBody ApartmentOwner aprtmentOwnerRegisterRequest) {
+        return this.userService.apartmentOwnerRegister(aprtmentOwnerRegisterRequest);
     }
 
 }

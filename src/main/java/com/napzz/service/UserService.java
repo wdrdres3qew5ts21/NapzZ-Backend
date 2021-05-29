@@ -54,17 +54,14 @@ public class UserService {
         return null;
     }
 
-    public JsonNode registerWithEmail(User registerRequest) {
-        return null;
-    }
-
     public Customer customerRegisterWithEmail(Customer customerRegisterRequest) {
         Customer savedCustomer = customerRepository.save(customerRegisterRequest);
         return savedCustomer;
     }
 
-    public JsonNode aprtmentOwnerRegister(ApartmentOwner aprtmentOwnerRegisterRequest) {
-        return null;
+    public ApartmentOwner apartmentOwnerRegister(ApartmentOwner aprtmentOwnerRegisterRequest) {
+        ApartmentOwner apartmentOwner = apartmentOwnerRepository.save(aprtmentOwnerRegisterRequest);
+        return apartmentOwner;
     }
 
     public HashMap verifyEmailToken(User emailVerifyRequest) {
