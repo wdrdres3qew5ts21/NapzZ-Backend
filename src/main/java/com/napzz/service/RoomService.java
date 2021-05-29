@@ -118,5 +118,10 @@ public class RoomService {
         response.put("message", "Delete Successfull");
         roomRepository.deleteById(roomId);
     }
+
+    public ContractType createContractType(ContractType contract) {
+        ContractType savedContractType = contractTypeRepository.save(contract);
+        return  savedContractType;
+    }
     
 }

@@ -42,10 +42,7 @@ public class Room {
     @OneToOne
     private ContractType contractType;
 
-    @ManyToMany
-    private List<LandmarkFeature> features;
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<FacilityFeature> facilities;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -69,7 +66,6 @@ public class Room {
         this.images = images;
         this.price = price;
         this.contractType = contractType;
-        this.features = features;
         this.facilities = facilities;
         this.reviews = reviews;
         this.location = location;
@@ -131,14 +127,6 @@ public class Room {
         this.contractType = contractType;
     }
 
-    public List<LandmarkFeature> getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(List<LandmarkFeature> features) {
-        this.features = features;
-    }
-
     public List<FacilityFeature> getFacilities() {
         return facilities;
     }
@@ -166,7 +154,7 @@ public class Room {
     @Override
     public String toString() {
         return "Room [contractType=" + contractType + ", description=" + description + ", facilities=" + facilities
-                + ", features=" + features + ", id=" + id + ", images=" + images + ", location=" + location + ", price="
+                + ", id=" + id + ", images=" + images + ", location=" + location + ", price="
                 + price + ", reviews=" + reviews + ", roomName=" + roomName + "]";
     }
     
