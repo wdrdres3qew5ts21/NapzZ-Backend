@@ -17,6 +17,7 @@ import javax.ws.rs.core.*;
 import com.napzz.dto.OAuthPrincial;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;
+import com.napzz.entity.room.ContractType;
 import com.napzz.entity.room.Room;
 import com.napzz.service.RoomService;
 
@@ -80,6 +81,13 @@ public class RoomController {
         HashMap<String, String> response = new HashMap();
         roomService.deleteRoomById(roomId);
         return Response.ok(response).build();
+    }
+
+    @Path("contract")
+    @POST
+    public Response createContractType(@RequestBody ContractType contract){
+        ContractType createContractType = roomService.createContractType(contract);
+        return Response.ok(createContractType).build();
     }
 
  
