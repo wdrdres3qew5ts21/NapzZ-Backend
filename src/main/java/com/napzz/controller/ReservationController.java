@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -24,12 +25,11 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import io.smallrye.jwt.auth.principal.JWTParser;
 import io.smallrye.jwt.auth.principal.ParseException;
 
-
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
-public class ReservationController{
+public class ReservationController {
 
     @Inject
     ReservationService reservationService;
@@ -47,16 +47,16 @@ public class ReservationController{
 
         if (uploadEvidentResponse != null) {
             return Response.ok(uploadEvidentResponse).build();
-        }
-        else{
+        } else {
             HashMap<String, String> response = new HashMap();
             response.put("errorMessage", "data not found");
-            return Response.ok("data not found").build();            
+            return Response.ok("data not found").build();
         }
 
     }
 
     @Path("reserve-room")
+    @RolesAllowed({ "USER" })
     @POST
     public Response reserveRoom(@RequestBody Reservation reservationRequest) {
         try {
@@ -65,8 +65,7 @@ public class ReservationController{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        Reservation reserveRoom = reservationService.reserveRoom(jwt,reservationRequest);
-        return Response.ok(reserveRoom).build();
+        return reservationService.reserveRoom(jwt, reservationRequest);
     }
 
     @Path("reserves")
@@ -78,8 +77,24 @@ public class ReservationController{
 
     @Path("reserve/{reservationId}")
     @GET
-    public Response findReservationById(@PathParam("reservationId") int reservationId){
+    public Response findReservationById(@PathParam("reservationId") int reservationId) {
         Optional<Reservation> reservation = reservationService.findReservationById(reservationId);
         return Response.ok(reservation).build();
     }
+
+    @Path("reserve/user")
+    @RolesAllowed({ "USER" })
+    @GET
+    public Response findReservationByUserId() {
+        try {
+            jwtParser.parse(jwt.getRawToken());
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Integer userId = Integer.parseInt(jwt.getClaim("USER_ID").toString());
+        List<Reservation> userResrvationList = reservationService.findReservationByUserId(userId);
+        return Response.ok(userResrvationList).build();
+    }
+
 }

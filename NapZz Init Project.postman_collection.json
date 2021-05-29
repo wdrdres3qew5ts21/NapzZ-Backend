@@ -218,164 +218,6 @@
 			]
 		},
 		{
-			"name": "เจ้าของหอพัก Login",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);\r",
-							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"nithirun1995@gmail.com\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{napzz-backend}}/api/user/login",
-					"host": [
-						"{{napzz-backend}}"
-					],
-					"path": [
-						"api",
-						"user",
-						"login"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Reserve Room",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt_token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{napzz-backend}}/api/room/reserve",
-							"host": [
-								"{{napzz-backend}}"
-							],
-							"path": [
-								"api",
-								"room",
-								"reserve"
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": [],
-					"cookie": [],
-					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
-				}
-			]
-		},
-		{
-			"name": "เจ้าของหอพัก Login Two Factor ยืนยันซ้ำอีกครั้ง",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);\r",
-							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"emailToken\": \"olJzG5\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{napzz-backend}}/api/user/login/twofactor/verify-email",
-					"host": [
-						"{{napzz-backend}}"
-					],
-					"path": [
-						"api",
-						"user",
-						"login",
-						"twofactor",
-						"verify-email"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Reserve Room",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt_token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{napzz-backend}}/api/room/reserve",
-							"host": [
-								"{{napzz-backend}}"
-							],
-							"path": [
-								"api",
-								"room",
-								"reserve"
-							]
-						}
-					},
-					"_postman_previewlanguage": "json",
-					"header": [],
-					"cookie": [],
-					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
-				}
-			]
-		},
-		{
 			"name": "ผู้ใช้บริการ Login Two Factor ยืนยันซ้ำอีกครั้ง",
 			"event": [
 				{
@@ -394,7 +236,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"emailToken\": \"jC5Fbw\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"raw": "{\r\n    \"emailToken\": \"NaRMsW\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -636,6 +478,16 @@
 		{
 			"name": "สร้าง Apartment 1",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -701,6 +553,16 @@
 		{
 			"name": "สร้าง Apartment 2",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -1080,6 +942,16 @@
 		{
 			"name": "สร้าง Room 1",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -1145,6 +1017,16 @@
 		{
 			"name": "สร้าง Room 2",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -1210,11 +1092,21 @@
 		{
 			"name": "จอง Room 1",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"room\":{\r\n        \"id\": 2\r\n    },\r\n    \"user\":{\r\n        \"userId\": 1\r\n    }\r\n}",
+					"raw": "{\r\n    \"room\":{\r\n        \"id\": 2\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1229,6 +1121,24 @@
 					"path": [
 						"api",
 						"reserve-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "แสดงการจองทั้งหมด",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{napzz-backend}}/api/reserves",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"reserves"
 					]
 				}
 			},
@@ -1273,22 +1183,228 @@
 			]
 		},
 		{
-			"name": "แสดงการจองทั้งหมด",
+			"name": "แสดงรายการห้องพักที่ ผู้ใช้บริการหอพักจอง",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{napzz-backend}}/api/reserves",
+					"raw": "{{napzz-backend}}/api/reserve/user",
 					"host": [
 						"{{napzz-backend}}"
 					],
 					"path": [
 						"api",
-						"reserves"
+						"reserve",
+						"user"
 					]
 				}
 			},
 			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "เจ้าของหอพัก Login Two Factor ยืนยันซ้ำอีกครั้ง",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailToken\": \"olJzG5\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/user/login/twofactor/verify-email",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login",
+						"twofactor",
+						"verify-email"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "เจ้าของหอพัก Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"jwtToken\", jsonData[\"jwtToken\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"nithirun1995@gmail.com\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{napzz-backend}}/api/user/login",
+					"host": [
+						"{{napzz-backend}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Reserve Room",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": \"2\",\r\n    \"startDate\": \"2021-04-23T06:18:26+0000\",\r\n    \"endDate\": \"2021-05-23T06:18:26+0000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{napzz-backend}}/api/room/reserve",
+							"host": [
+								"{{napzz-backend}}"
+							],
+							"path": [
+								"api",
+								"room",
+								"reserve"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\r\n    \"totalPriceToPay\": \"1800\",\r\n    \"roomId\": \"2\"\r\n}"
+				},
 				{
 					"name": "Reserve Room",
 					"originalRequest": {

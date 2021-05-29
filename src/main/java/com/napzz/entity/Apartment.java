@@ -12,11 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.napzz.entity.asset.Image;
 import com.napzz.entity.location.Location;
 import com.napzz.entity.room.Room;
+import com.napzz.entity.user.ApartmentOwner;
 
 
 
@@ -41,6 +43,18 @@ public class Apartment {
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "apartment")
     @JsonIgnoreProperties("apartment")
     private List<Room> roomList;
+
+    @OneToOne
+    private ApartmentOwner apartmentOwner;
+
+
+    public ApartmentOwner getApartmentOwner() {
+        return apartmentOwner;
+    }
+
+    public void setApartmentOwner(ApartmentOwner apartmentOwner) {
+        this.apartmentOwner = apartmentOwner;
+    }
 
     public int getApartmentId() {
         return apartmentId;
