@@ -1,11 +1,11 @@
 package com.napzz.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -32,8 +32,17 @@ public class ReservationController{
     @Path("upload-evident")
     @POST
     public Response uploadEvident(@RequestBody Reservation uploadEvidentRequest) {
-        reservationService.uploadEvident(uploadEvidentRequest);
-        return Response.ok().build();
+        Reservation uploadEvidentResponse = this.reservationService.uploadEvident(uploadEvidentRequest);
+
+        if (uploadEvidentResponse != null) {
+            return Response.ok(uploadEvidentResponse).build();
+        }
+        else{
+            HashMap<String, String> response = new HashMap();
+            response.put("errorMessage", "data not found");
+            return Response.ok("data not found").build();            
+        }
+
     }
 
     @Path("reserve-room")
@@ -48,5 +57,12 @@ public class ReservationController{
     public Response listReserves() {
         List<Reservation> listReserves = reservationService.listReserves();
         return Response.ok(listReserves).build();
+    }
+
+    @Path("reserve/{reservationId}")
+    @GET
+    public Response findReservationById(@PathParam("reservationId") int reservationId){
+        Optional<Reservation> reservation = reservationService.findReservationById(reservationId);
+        return Response.ok(reservation).build();
     }
 }
