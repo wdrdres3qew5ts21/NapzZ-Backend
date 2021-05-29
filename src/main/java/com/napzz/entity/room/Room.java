@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -35,7 +36,7 @@ public class Room {
     @Column(length = 4000)
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Image> images;
 
     private double price;
@@ -56,6 +57,9 @@ public class Room {
     @JsonIgnoreProperties("roomList")
     private Apartment apartment;
 
+    @OneToOne
+    private RoomStatus roomStatus;
+
     public Room(){
 
     }
@@ -71,6 +75,14 @@ public class Room {
         this.facilities = facilities;
         this.reviews = reviews;
         this.location = location;
+    }
+
+    public RoomStatus getRoomStatus() {
+        return roomStatus;
+    }
+
+    public void setRoomStatus(RoomStatus roomStatus) {
+        this.roomStatus = roomStatus;
     }
 
     public int getId() {

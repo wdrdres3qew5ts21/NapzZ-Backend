@@ -30,6 +30,9 @@ public class Reservation {
 
     private String signatureLink;
 
+    @OneToOne
+    public ReservationStatus reservationStatus;
+
     public Reservation() {
         
     }
@@ -41,7 +44,13 @@ public class Reservation {
         this.signatureLink = signatureLink;
     }
 
-    
+    public ReservationStatus getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(ReservationStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
 
     public Room getRoom() {
         return room;

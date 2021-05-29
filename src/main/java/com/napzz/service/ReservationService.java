@@ -11,9 +11,13 @@ import javax.ws.rs.core.Response.Status;
 
 import com.napzz.controller.ReservationController;
 import com.napzz.entity.reservation.Reservation;
+import com.napzz.entity.reservation.ReservationStatus;
 import com.napzz.entity.room.Room;
+import com.napzz.entity.room.RoomStatus;
 import com.napzz.entity.user.Customer;
 import com.napzz.repository.ReservationRepository;
+import com.napzz.repository.ReservationStatusRepository;
+import com.napzz.repository.RoomStatusRepository;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.hibernate.mapping.Map;
@@ -23,6 +27,12 @@ public class ReservationService {
 
     @Inject
     private ReservationRepository reservationRepository;
+
+    @Inject
+    private ReservationStatusRepository reservationStatusRepository;
+
+    @Inject
+    private RoomStatusRepository roomStatusRepository;
 
     public Reservation uploadEvident(Reservation uploadEvidentRequest) {
         System.out.println(uploadEvidentRequest);
@@ -45,6 +55,9 @@ public class ReservationService {
         Customer customer = new Customer();
         customer.setUserId(userId);
         reservationRequest.setUser(customer);
+        ReservationStatus reservationStatus = new ReservationStatus();
+        reservationStatus.setReservationStatusId(1);
+        reservationRequest.setReservationStatus(reservationStatus);
         Reservation reserveRoomOfUser = reservationRepository.findByUserUserIdAndRoomId(userId,
                 reservationRequest.getRoom().getId());
         if (reserveRoomOfUser == null) {
@@ -69,5 +82,18 @@ public class ReservationService {
         List<Reservation> userReservationList = reservationRepository.findByUserUserId(userId);
         return userReservationList;
     }
+
+    public RoomStatus createRoomStatus(RoomStatus roomStatus) {
+        return roomStatusRepository.save(roomStatus);
+    }
+
+    public List<RoomStatus> listRoomStatus() {
+        return roomStatusRepository.findAll();
+    }
+
+    public ReservationStatus createReservationtatus(ReservationStatus reservationStatus) {
+        return reservationStatusRepository.save(reservationStatus);
+    }
+
 
 }

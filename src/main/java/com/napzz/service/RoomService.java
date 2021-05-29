@@ -17,6 +17,7 @@ import com.napzz.entity.location.Location;
 import com.napzz.entity.review.Review;
 import com.napzz.entity.room.ContractType;
 import com.napzz.entity.room.Room;
+import com.napzz.entity.room.RoomStatus;
 import com.napzz.repository.ApartmentRepository;
 import com.napzz.repository.ContractTypeRepository;
 import com.napzz.repository.FacilityFeatureRepository;
@@ -42,7 +43,10 @@ public class RoomService {
     private ApartmentRepository apartmentRepository;
 
     public Room createRoom(Integer apartmentOwnerId, Room room) {
-        roomRepository.findById(room.getApartment().getApartmentId());
+        //roomRepository.findById(room.getApartment().getApartmentId());
+        RoomStatus roomStatus = new RoomStatus();
+        roomStatus.setRoomStatusId(1);
+        room.setRoomStatus(roomStatus);
         return roomRepository.save(room);
     }
 

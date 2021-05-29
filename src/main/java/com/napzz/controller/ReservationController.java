@@ -17,6 +17,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.*;
 
 import com.napzz.entity.reservation.Reservation;
+import com.napzz.entity.reservation.ReservationStatus;
+import com.napzz.entity.room.RoomStatus;
 import com.napzz.service.ReservationService;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
@@ -96,5 +98,34 @@ public class ReservationController {
         List<Reservation> userResrvationList = reservationService.findReservationByUserId(userId);
         return Response.ok(userResrvationList).build();
     }
+
+    @POST
+    @Path("room-status")
+    public Response createRoomStatus(@RequestBody RoomStatus roomStatus ) {
+        RoomStatus createdRoomStatus = reservationService.createRoomStatus(roomStatus);
+        return Response.ok(createdRoomStatus).build();
+    }
+
+    @GET
+    @Path("room-status")
+    public Response listRoomStatus() {
+        List<RoomStatus> listRoomStatus = reservationService.listRoomStatus();
+        return Response.ok(listRoomStatus).build();
+    }
+
+    @POST
+    @Path("reservation-status")
+    public Response createReservationtatus(@RequestBody ReservationStatus reservationStatus ) {
+        ReservationStatus createdReservationStatus = reservationService.createReservationtatus(reservationStatus);
+        return Response.ok(createdReservationStatus).build();
+    }
+
+    @GET
+    @Path("reservation-status")
+    public Response listReservationtatus() {
+        List<RoomStatus> listRoomStatus = reservationService.listRoomStatus();
+        return Response.ok(listRoomStatus).build();
+    }
+
 
 }
