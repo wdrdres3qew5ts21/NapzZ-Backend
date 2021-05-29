@@ -73,6 +73,8 @@ public class UserService {
                 String generateJWTToken = JWTUtil.generateJWTToken(foundedUsername);
                 response.put("jwtToken", generateJWTToken);
                 response.put("message", "Authentication with 2 Factor Email Success");
+                foundedUsername.setEmailToken(null);
+                userRepository.save(foundedUsername);
                 return response;
             }
         }
