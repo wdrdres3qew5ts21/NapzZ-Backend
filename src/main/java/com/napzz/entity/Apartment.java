@@ -39,7 +39,7 @@ public class Apartment {
     private Location location;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "apartment")
-    //@JsonIgnoreProperties("apartment")
+    @JsonIgnoreProperties("apartment")
     private List<Room> roomList;
 
     public int getApartmentId() {
