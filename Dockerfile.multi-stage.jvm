@@ -7,9 +7,9 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quay.io/linxianer12/napzz-backend:1.0.0 .
-# docker push quay.io/linxianer12/napzz-backend:1.0.0 
-# oc new-app quay.io/linxianer12/napzz-backend:1.0.0 --as-deployment-config  --name napzz-backend 
+# docker build -f src/main/docker/Dockerfile.multi-stage.jvm -t quay.io/linxianer12/napzz-backend:1.1.0 .
+# docker push quay.io/linxianer12/napzz-backend:1.1.0 
+# oc new-app quay.io/linxianer12/napzz-backend:1.1.0 --as-deployment-config  --name napzz-backend 
 # Then run the container using:
 #
 # docker run -i --rm -p 8080:8080 quarkus/backend-jvm
@@ -22,9 +22,16 @@
 # docker run -i --rm -p 8080:8080 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/backend-jvm
 #
 ###
+
+
+# FROM httpd 
+# ADD pom.xml /usr/src/app
+# ADD src/ /usr/src/app/src
+# RUN mvn -f /usr/src/app/pom.xml package
+
 FROM docker.io/maven:3.6.3-openjdk-11 AS build
-COPY src /usr/src/app/src
-COPY pom.xml /usr/src/app
+ADD pom.xml /usr/src/app
+ADD src/ /usr/src/app/src
 RUN mvn -f /usr/src/app/pom.xml package
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3
@@ -49,10 +56,10 @@ RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
 # Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 # We make four distinct layers so if there are application changes the library layers can be re-used
-COPY --from=build --chown=1001 target/quarkus-app/lib/ /deployments/lib/
-COPY --from=build --chown=1001  target/quarkus-app/*.jar /deployments/
-COPY --from=build --chown=1001 target/quarkus-app/app/ /deployments/app/
-COPY --from=build --chown=1001 target/quarkus-app/quarkus/ /deployments/quarkus/
+COPY --from=build --chown=1001 /usr/src/app/target/quarkus-app/lib/ /deployments/lib/
+COPY --from=build --chown=1001 /usr/src/app/target/quarkus-app/*.jar /deployments/
+COPY --from=build --chown=1001 /usr/src/app/target/quarkus-app/app/ /deployments/app/
+COPY --from=build --chown=1001 /usr/src/app/target/quarkus-app/quarkus/ /deployments/quarkus/
 
 EXPOSE 8080
 USER 1001
