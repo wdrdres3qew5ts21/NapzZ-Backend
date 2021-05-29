@@ -16,16 +16,6 @@ public class ReservationService {
     @Inject
     private ReservationRepository reservationRepository;
 
-    // public static void main(String[] args) {
-    //     String checkReservation = Reservation.findById(0);
-    //     if(checkReservation != null){
-    //         System.out.println(checkReservation);
-    //     }
-    //     else{
-    //         System.out.println(checkReservation);
-    //     }
-    // }
-
     public Reservation uploadEvident(Reservation uploadEvidentRequest) {
         System.out.println(uploadEvidentRequest);
         Reservation checkReservation = reservationRepository.findById(uploadEvidentRequest.getReservationId()).get();
