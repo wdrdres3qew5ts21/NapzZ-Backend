@@ -47,7 +47,7 @@ public class UserController {
     @Inject
     JsonWebToken jwt;
 
-    @Inject 
+    @Inject
     JWTParser jwtParser;
 
     @GET()
@@ -95,7 +95,7 @@ public class UserController {
     // @GET
     // @Path("mail")
     // public JsonNode sentMail() {
-    //     return this.userService.sentMail("");
+    // return this.userService.sentMail("");
     // }
 
     @POST
@@ -104,7 +104,7 @@ public class UserController {
         User loginResponse = this.userService.login(LoginRequest);
         HashMap<String, Object> response = new HashMap();
         if (loginResponse == null) {
-            response.put("errorMessage", "AythenticationFailed");
+            response.put("message", "Authentication Failed");
             return Response.status(401).entity(response).build();
         }
         // Login สำเร็จไม่เป็น null
@@ -116,14 +116,15 @@ public class UserController {
     }
 
     @POST
-    @Path("user/verify-email")
+    @Path("user/login/twofactor/verify-email")
     public Response verifyEmailToken(@RequestBody User emailVerifyRequest) {
-        User loginResponse = this.userService.login(emailVerifyRequest);
-        HashMap<String, String> response = new HashMap();
-        userService.verifyEmailToken();
-        //String generateJWTToken = JWTUtil.generateJWTToken(loginResponse);
-        //response.put("jwtToken", generateJWTToken);
-        return Response.ok(response).build();
+        HashMap verifyEmailTokenResponse = this.userService.verifyEmailToken(emailVerifyRequest);
+        if (verifyEmailTokenResponse != null) {
+            return Response.ok(verifyEmailTokenResponse).build();
+        }
+        verifyEmailTokenResponse = new HashMap<>();
+        verifyEmailTokenResponse.put("message", "Faile Authentication with Email Please check your Email Token Again !");
+        return Response.status(401).entity(verifyEmailTokenResponse).build();
     }
 
     @POST

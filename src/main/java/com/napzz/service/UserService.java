@@ -1,5 +1,6 @@
 package com.napzz.service;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -31,8 +32,8 @@ public class UserService {
     @Inject
     private ApartmentOwnerRepository apartmentOwnerRepository;
 
-    public JsonNode sentMailTwoFactorAuthentication(String recipient,String emailToken) {
-        return mailService.sentMailTwoFactorAuthentication(recipient,emailToken);
+    public JsonNode sentMailTwoFactorAuthentication(String recipient, String emailToken) {
+        return mailService.sentMailTwoFactorAuthentication(recipient, emailToken);
     }
 
     public User login(User loginRequest) {
@@ -45,7 +46,7 @@ public class UserService {
             // 2. บันทึก Token นั้นลง Table SecurityAuthentication ใน Field Security
             User emailLoginResponse = userRepository.save(foundedUsername);
             // 3. ส่งเมล์ที่มีข้อมูลเกี่ยวกับ Fields นั้นออกไปหา User ที่ Login ผ่าน HashMap
-            this.sentMailTwoFactorAuthentication(emailLoginResponse.getEmail(),emailLoginResponse.getEmailToken());
+            this.sentMailTwoFactorAuthentication(emailLoginResponse.getEmail(), emailLoginResponse.getEmailToken());
             return emailLoginResponse;
         }
         return null;
@@ -64,8 +65,18 @@ public class UserService {
         return null;
     }
 
-    public void verifyEmailToken() {
-
+    public HashMap verifyEmailToken(User emailVerifyRequest) {
+        HashMap<String, String> response = new HashMap();
+        User foundedUsername = userRepository.findByUsername(emailVerifyRequest.getUsername());
+        if (foundedUsername.getPassword().equals(emailVerifyRequest.getPassword())) {
+            if (emailVerifyRequest.getEmailToken().equals(foundedUsername.getEmailToken())) {
+                String generateJWTToken = JWTUtil.generateJWTToken(foundedUsername);
+                response.put("jwtToken", generateJWTToken);
+                response.put("message", "Authentication with 2 Factor Email Success");
+                return response;
+            }
+        }
+        return null;
     }
 
 }
