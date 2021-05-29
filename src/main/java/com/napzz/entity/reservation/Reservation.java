@@ -1,10 +1,9 @@
 package com.napzz.entity.reservation;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -97,7 +96,4 @@ public class Reservation {
         return "Reservation [reservationId=" + reservationId + ", citizenIdLink=" + citizenIdLink + ", evidentLink=" + evidentLink + ", signatureLink=" + signatureLink + "]";
     }
 
-    public static String findById(int i) {
-        return null;
-    }
 }
