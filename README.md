@@ -4,11 +4,18 @@
 ![alt](asset/app-stack.png)
 
 SMTP Server: Mailgun Service
+
 Authentication: JWT Token
+
 Persistent API: JPA Hibernate
+
 Database: MySQL Connector
+
 Infrastructure: Docker Container Image
-Container Platform: Openshift 4
+
+Container Platform: Openshift 4.6
+
+![alt](asset/app-connect.png)
 
 ### Class Diagram
 
