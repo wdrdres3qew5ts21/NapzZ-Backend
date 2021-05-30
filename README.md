@@ -17,6 +17,15 @@ Container Platform: Openshift 4.6
 
 ![alt](asset/app-connect.png)
 
+### Preview User Interface
+![alt](asset/app/1login.png)
+![alt](asset/app/2%20overview.png)
+![alt](asset/app/3search.png)
+![alt](asset/app/4.4.1view.png)
+![alt](asset/app/4reserve.png)
+![alt](asset/app/5manag.png)
+![alt](asset/app/6edit.png)
+
 ### Class Diagram
 
 กดที่รูปเพื่อดูรูปแบบ HD (ภาพขนาดใหญ่มาก สามารถซูมได้)
