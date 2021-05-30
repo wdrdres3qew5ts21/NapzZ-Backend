@@ -1,6 +1,10 @@
 # backend project
 
+Backend Version ปัจจุบัน
 
+quay.io/linxianer12/napzz-backend:1.18.0
+
+mysql 8.0
 
 ```
 docker-compose up -d

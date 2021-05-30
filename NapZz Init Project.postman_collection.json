@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"username\": \"wdrdres3qew5ts21@gmail.com\",\r\n    \"password\": \"UltimateGod999\",\r\n    \"firstname\": \"Lin\",\r\n    \"lastname\": \"Jingyun\"\r\n}",
+					"raw": "{\r\n    \"email\": \"panuwat33586@gmail.com\",\r\n    \"username\": \"panuwat33586@gmail.com\",\r\n    \"password\": \"UltimateGod999\",\r\n    \"firstname\": \"Panuwat\",\r\n    \"lastname\": \"Chiawchansilp\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1256,13 +1256,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{napzz-backend}}/api/reservation-status",
+					"raw": "{{napzz-backend}}/api/room-status",
 					"host": [
 						"{{napzz-backend}}"
 					],
 					"path": [
 						"api",
-						"reservation-status"
+						"room-status"
 					]
 				}
 			},
@@ -1310,14 +1310,7 @@
 			"name": "สร้าง ReservationStatus:  InProgress",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwtToken}}",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
@@ -1385,14 +1378,7 @@
 			"name": "สร้าง ReservationStatus:  Approved",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{jwtToken}}",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
@@ -1623,7 +1609,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 3,\r\n    \"apartment\": {\r\n        \"apartmentId\": 2\r\n    },\r\n    \"roomName\": \"ห้องผู้บริหารแนว Tech Programmer\",\r\n    \"description\": \"Tech Programmer ที่ต้องการแรงบันดาลใจ ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": 2\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"apartment\": {\r\n        \"apartmentId\": 2\r\n    },\r\n    \"roomName\": \"ห้องผู้บริหารแนว Tech Programmer อัพเดทโดยซัน\",\r\n    \"description\": \"Tech Programmer ที่ต้องการแรงบันดาลใจ ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": 2\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1698,7 +1684,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"apartment\": {\r\n        \"apartmentId\": 8\r\n    },\r\n    \"roomName\": \"ห้องผู้บริหารแนว Tech Programmer Panuwat 6666\",\r\n    \"description\": \"Tech Programmer ที่ต้องการแรงบันดาลใจ ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"apartment\": {\r\n        \"apartmentId\": 8\r\n    },\r\n    \"roomName\": \"ห้องผู้บริหารแนว Tech Programmer Panuwat 6666\",\r\n    \"description\": \"Tech Programmer ที่ต้องการแรงบันดาลใจ ห้องหรูขนาดใหญ่ ช่วยสร้าง Productivity ดีๆได้สูง\",\r\n    \"images\": [\r\n        {\r\n            \"url\": \"https://i.ytimg.com/vi/Yt4yx9veLL4/maxresdefault.jpg\"\r\n        },\r\n        {\r\n            \"url\": \"https://q-xx.bstatic.com/images/hotel/max1024x768/280/280267550.jpg\"\r\n        }\r\n    ],\r\n    \"price\": 4500,\r\n    \"contractType\": {\r\n        \"contractId\": 2\r\n    },\r\n    \"facilities\": [\r\n        {\r\n            \"facilityId\": 2\r\n        },\r\n        {\r\n            \"facilityId\": 3\r\n        }\r\n    ],\r\n    \"review\": [\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"Clarissa Claudia\",\r\n            \"comment\": \"This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city. \"\r\n        },\r\n        {\r\n            \"rating\": 4.5,\r\n            \"name\": \"ฟ้าคำราม ซื่อตรง\",\r\n            \"comment\": \"หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด\"\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1772,14 +1758,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{napzz-backend}}/api/room/3",
+					"raw": "{{napzz-backend}}/api/room/5",
 					"host": [
 						"{{napzz-backend}}"
 					],
 					"path": [
 						"api",
 						"room",
-						"3"
+						"5"
 					]
 				}
 			},
@@ -2154,7 +2140,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"emailToken\": \"W3QIuG\",\r\n    \"username\": \"nithirun1995@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
+					"raw": "{\r\n    \"emailToken\": \"aZsX1F\",\r\n    \"username\": \"panuwat33586@gmail.com\",\r\n    \"password\": \"UltimateGod999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
