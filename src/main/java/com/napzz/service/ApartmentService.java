@@ -2,6 +2,7 @@ package com.napzz.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -20,7 +21,7 @@ public class ApartmentService {
 
     public Optional<Apartment> findByAprtmentId(int apartmentId) {
          Optional<Apartment> foundedRoom = apartmentRepository.findById(apartmentId);
-         List<Room> roomList = foundedRoom.get().getRoomList();
+         Set<Room> roomList = foundedRoom.get().getRoomList();
          System.out.println("======================");
          System.out.println(roomList);
         return foundedRoom;

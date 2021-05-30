@@ -46,7 +46,6 @@ public class ReservationController {
     @POST
     public Response uploadEvident(@RequestBody Reservation uploadEvidentRequest) {
         Reservation uploadEvidentResponse = this.reservationService.uploadEvident(uploadEvidentRequest);
-
         if (uploadEvidentResponse != null) {
             return Response.ok(uploadEvidentResponse).build();
         } else {
@@ -54,7 +53,6 @@ public class ReservationController {
             response.put("errorMessage", "data not found");
             return Response.ok("data not found").build();
         }
-
     }
 
     @Path("reserve-room")

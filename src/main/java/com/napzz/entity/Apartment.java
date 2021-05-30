@@ -1,6 +1,7 @@
 package com.napzz.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,7 +46,7 @@ public class Apartment {
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "apartment")
     @JsonIgnoreProperties("apartment")
-    private List<Room> roomList;
+    private Set<Room> roomList;
 
     @OneToOne
     private ApartmentOwner apartmentOwner;
@@ -75,11 +76,21 @@ public class Apartment {
         this.name = name;
     }
 
-    public List<Room> getRoomList() {
+
+    
+    // public List<Room> getRoomList() {
+    //     return roomList;
+    // }
+
+    // public void setRoomList(List<Room> roomList) {
+    //     this.roomList = roomList;
+    // }
+
+    public Set<Room> getRoomList() {
         return roomList;
     }
 
-    public void setRoomList(List<Room> roomList) {
+    public void setRoomList(Set<Room> roomList) {
         this.roomList = roomList;
     }
 
