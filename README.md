@@ -1,15 +1,31 @@
-# backend project
+# Backend Project
+
+### App Stack
+![alt](asset/app-stack.png)
+
+SMTP Server: Mailgun Service
+Authentication: JWT Token
+Persistent API: JPA Hibernate
+Database: MySQL Connector
+Infrastructure: Docker Container Image
+Container Platform: Openshift 4
 
 ### Class Diagram
+
 กดที่รูปเพื่อดูรูปแบบ HD (ภาพขนาดใหญ่มาก สามารถซูมได้)
+
 ![alt](asset/class-diagram-finalbackend.umlcd.png)
 
-Backend Version ปัจจุบัน
+### Backend Version ปัจจุบัน
+Container Registry: Quay.io
+https://quay.io/repository/linxianer12/napzz-backend?tab=tags
 
-quay.io/linxianer12/napzz-backend:1.19.0
+Image: quay.io/linxianer12/napzz-backend:1.19.0
+![alt](asset/container-image.png)
+### Developer Setup
+ใช้ Postman Collection สำหรับการเรียกใช้ API ที่ไฟล์ "NapZz Init Project.postman_collection.json"
 
-mysql 8.0
-
+![alt](asset/postman.png)
 ```
 docker-compose up -d
 
