@@ -47,7 +47,7 @@ public class Room {
     @OneToOne
     private ContractType contractType;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<FacilityFeature> facilities;
 
     @OneToMany(cascade = CascadeType.ALL)

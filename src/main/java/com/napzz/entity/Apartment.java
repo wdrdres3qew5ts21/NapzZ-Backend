@@ -20,6 +20,9 @@ import com.napzz.entity.location.Location;
 import com.napzz.entity.room.Room;
 import com.napzz.entity.user.ApartmentOwner;
 
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+
 
 
 @Entity

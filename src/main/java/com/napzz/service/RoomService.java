@@ -33,17 +33,21 @@ public class RoomService {
     @Inject
     private LandmarkFeatureRepository landmarkFeatureRepository;
 
-    @Inject 
+    @Inject
     private FacilityFeatureRepository facilityFeatureRepository;
 
-    @Inject 
+    @Inject
     private ContractTypeRepository contractTypeRepository;
 
-    @Inject 
+    @Inject
     private ApartmentService apartmentService;
 
     public Room createRoom(Integer apartmentOwnerId, Room room) {
-        roomRepository.findById(room.getApartment().getApartmentId());
+        // roomRepository.findById(room.getApartment().getApartmentId());
+        System.out.println("!!!!!!!!!!!!!!!!!! Create Room !!!!!!!!!!!!!!!!!!");
+        System.out.println(room);
+        System.out.println("!!!!!!!!!!!!!!!!!! End Transaction !!!!!!!!!!!!!!!!!!");
+
         RoomStatus roomStatus = new RoomStatus();
         roomStatus.setRoomStatusId(1);
         room.setRoomStatus(roomStatus);
@@ -82,9 +86,9 @@ public class RoomService {
         contractTypeRepository.save(monthlyContract);
         contractTypeRepository.save(yearlyContract);
 
-        LandmarkFeature landmarkFeature1 = new LandmarkFeature(1,"บริการขนส่งสาธารณะในระยะ 400 เมตร");
-        LandmarkFeature landmarkFeature2 = new LandmarkFeature(2,"Wifi Free Whole Apartment");
-        LandmarkFeature landmarkFeature3 = new LandmarkFeature(3,"Gym Maxxing");
+        LandmarkFeature landmarkFeature1 = new LandmarkFeature(1, "บริการขนส่งสาธารณะในระยะ 400 เมตร");
+        LandmarkFeature landmarkFeature2 = new LandmarkFeature(2, "Wifi Free Whole Apartment");
+        LandmarkFeature landmarkFeature3 = new LandmarkFeature(3, "Gym Maxxing");
         landmarkFeatureRepository.save(landmarkFeature1);
         landmarkFeatureRepository.save(landmarkFeature2);
         landmarkFeatureRepository.save(landmarkFeature3);
@@ -99,9 +103,11 @@ public class RoomService {
         facilityFeatureRepository.save(facilityFeature4);
 
         String description1 = "Drawing its design theme from the classic Sino-Portuguese architecture that characterises Phuket Town, Centara Grand Beach Resort Phuket is set directly on the sands at Karon Beach, backed by a green hill, and grouped around its own water park.  The resort offers a memorable holiday experience for everyone: couples and families will love the exhilarating leisure activities, the water sports, and of course the water park, and corporate and incentive groups have fine meeting facilities.";
-        ArrayList<Image> imageList1= new ArrayList();
-        imageList1.add(new Image(1,"https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768"));
-        imageList1.add(new Image(2,"https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg"));
+        ArrayList<Image> imageList1 = new ArrayList();
+        imageList1.add(new Image(1,
+                "https://pix6.agoda.net/hotelImages/6024613/-1/0443725487752c48ab6761a3d659d816.jpg?s=1024x768"));
+        imageList1.add(new Image(2,
+                "https://img.travel.rakuten.co.jp/share/image_up/172054/LARGE/7b1080a5373288e22c687ae72d033d899e18f4c8.47.1.26.2.jpg"));
         ContractType contractRoom1 = new ContractType();
         contractRoom1.setContractId(1);
         List<LandmarkFeature> landmarkRoom1 = new ArrayList<>();
@@ -115,17 +121,19 @@ public class RoomService {
         facilityRoom1.add(facilityFeature3);
         facilityRoom1.add(facilityFeature4);
 
-        List<Review> reviews= new ArrayList<Review>();
-        String comment1="This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city";
-        reviews.add(new Review(1, 4.5,"Clarrisa Claudia",comment1));
-        String comment2="หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด";
-        reviews.add(new Review(2, 4.5,"ฟ้าคำราม ซื่อตรง",comment2));
+        List<Review> reviews = new ArrayList<Review>();
+        String comment1 = "This was our first place to stay in Phuket and we loved it! The bed was very comfortable, the washing machine was free and the drier only 100 BAht. We could leave our luggage after check-out, so we could spend the day in the city before going to our next city";
+        reviews.add(new Review(1, 4.5, "Clarrisa Claudia", comment1));
+        String comment2 = "หอพักที่ให้ค่าถึงจิตวิญญาณของท่านผ่านฟ้า ใครที่ต้องการจะมาฝึกค่ายมวยธวัชล้ำฟ้า ต้องไม่พลาดหอพักที่นี่ ซึ่งใกล้กับสนามมวยอันเลื่องชื่อมากที่สุด";
+        reviews.add(new Review(2, 4.5, "ฟ้าคำราม ซื่อตรง", comment2));
 
-        Location location= new Location("Phuket","30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150");
+        Location location = new Location("Phuket",
+                "30 หมู่ 3 ซ.ราชอุทิศ 1 ถ.ราชอุทิศ200ปี ต.ป่าตอง อ.กระทู้ จ.ภูเก็ต 83150");
 
-        Room room1 = new Room(1,"หอธวัชล้ำฟ้า Phuket", description1,imageList1,2500,contractRoom1,landmarkRoom1,facilityRoom1,reviews,location);
+        Room room1 = new Room(1, "หอธวัชล้ำฟ้า Phuket", description1, imageList1, 2500, contractRoom1, landmarkRoom1,
+                facilityRoom1, reviews, location);
         roomRepository.save(room1);
-        
+
         System.out.println("===================");
         System.out.println(room1);
         return room1;
@@ -139,11 +147,11 @@ public class RoomService {
 
     public ContractType createContractType(ContractType contract) {
         ContractType savedContractType = contractTypeRepository.save(contract);
-        return  savedContractType;
+        return savedContractType;
     }
 
     public void deleteRoomById(Integer apartmentOwnerId, int roomId) {
         roomRepository.deleteById(roomId);
     }
-    
+
 }
