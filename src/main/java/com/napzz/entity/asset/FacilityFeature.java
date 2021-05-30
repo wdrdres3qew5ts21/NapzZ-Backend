@@ -1,11 +1,15 @@
 package com.napzz.entity.asset;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.napzz.entity.room.Room;
 
 @Entity
 public class FacilityFeature {
@@ -17,6 +21,10 @@ public class FacilityFeature {
 
     private String facility;
 
+    @OneToMany
+    private List<Room> roomList;
+    
+
     public FacilityFeature() {
         
     }
@@ -24,6 +32,14 @@ public class FacilityFeature {
     public FacilityFeature(int facilityId, String facility) {
         this.facilityId = facilityId;
         this.facility = facility;
+    }
+
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
     }
 
     public int getFacilityId() {

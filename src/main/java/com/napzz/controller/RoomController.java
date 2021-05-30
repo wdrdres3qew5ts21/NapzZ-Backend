@@ -8,12 +8,14 @@ import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.*;
+import javax.ws.rs.core.Response.Status;
 
 import com.napzz.dto.OAuthPrincial;
 import com.napzz.entity.asset.FacilityFeature;
@@ -65,6 +67,23 @@ public class RoomController {
         return Response.ok(createdFacilityFeature).build();
     }
 
+    @Path("room/{roomId}")
+    @RolesAllowed({"APARTMENT_OWNER"})
+    @DELETE
+    public Response deleteRoomById(@PathParam("roomId") int roomId){
+        try {
+            jwtParser.parse(jwt.getRawToken());
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Integer apartmentOwnerId = Integer.parseInt(jwt.getClaim("USER_ID").toString());
+        roomService.deleteRoomById(apartmentOwnerId, roomId);
+        HashMap<String, String> response = new HashMap<>();
+        response.put("message", "Delete Room Success");
+        return Response.status(Status.NO_CONTENT).entity(response).build();
+    }
+
     @Path("room")
     @RolesAllowed({"APARTMENT_OWNER"})
     @POST
@@ -92,14 +111,6 @@ public class RoomController {
     public Response listRoom(){
         List<Room> roomList = roomService.listRoom();
         return Response.ok(roomList).build();
-    }
-
-    @Path("room/{roomId}")
-    @POST
-    public Response deleteRoomById(@PathParam("roomId") int roomId){
-        HashMap<String, String> response = new HashMap();
-        roomService.deleteRoomById(roomId);
-        return Response.ok(response).build();
     }
 
     @Path("contract")

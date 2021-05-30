@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -29,6 +31,7 @@ import org.jboss.resteasy.spi.touri.MappedBy;
 public class Room {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     private String roomName;
@@ -44,7 +47,7 @@ public class Room {
     @OneToOne
     private ContractType contractType;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<FacilityFeature> facilities;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -40,10 +40,10 @@ public class RoomService {
     private ContractTypeRepository contractTypeRepository;
 
     @Inject 
-    private ApartmentRepository apartmentRepository;
+    private ApartmentService apartmentService;
 
     public Room createRoom(Integer apartmentOwnerId, Room room) {
-        //roomRepository.findById(room.getApartment().getApartmentId());
+        roomRepository.findById(room.getApartment().getApartmentId());
         RoomStatus roomStatus = new RoomStatus();
         roomStatus.setRoomStatusId(1);
         room.setRoomStatus(roomStatus);
@@ -140,6 +140,10 @@ public class RoomService {
     public ContractType createContractType(ContractType contract) {
         ContractType savedContractType = contractTypeRepository.save(contract);
         return  savedContractType;
+    }
+
+    public void deleteRoomById(Integer apartmentOwnerId, int roomId) {
+        roomRepository.deleteById(roomId);
     }
     
 }
