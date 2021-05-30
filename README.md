@@ -1,8 +1,11 @@
 # backend project
 
+### Class Diagram
+![alt](asset/class-diagram-finalbackend.umlcd.png)
+
 Backend Version ปัจจุบัน
 
-quay.io/linxianer12/napzz-backend:1.18.0
+quay.io/linxianer12/napzz-backend:1.19.0
 
 mysql 8.0
 
