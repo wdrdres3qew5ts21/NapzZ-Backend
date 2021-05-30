@@ -1,7 +1,6 @@
 package com.napzz.repository;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.napzz.dto.authen.EmailLoginResponse;
 import com.napzz.entity.room.ContractType;
 import com.napzz.entity.user.User;
 

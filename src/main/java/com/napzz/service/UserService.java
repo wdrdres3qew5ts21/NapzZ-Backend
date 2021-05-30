@@ -7,7 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.napzz.dto.authen.EmailLoginResponse;
 import com.napzz.entity.user.ApartmentOwner;
 import com.napzz.entity.user.Customer;
 import com.napzz.entity.user.User;

@@ -16,7 +16,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.*;
 
-import com.napzz.dto.OAuthPrincial;
 import com.napzz.entity.Apartment;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;

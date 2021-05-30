@@ -20,8 +20,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.napzz.dto.OAuthPrincial;
-import com.napzz.dto.authen.EmailLoginResponse;
 import com.napzz.entity.asset.FacilityFeature;
 import com.napzz.entity.asset.LandmarkFeature;
 import com.napzz.entity.room.Room;
