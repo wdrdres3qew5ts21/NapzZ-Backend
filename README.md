@@ -1,6 +1,7 @@
 # backend project
 
 ### Class Diagram
+กดที่รูปเพื่อดูรูปแบบ HD (ภาพขนาดใหญ่มาก สามารถซูมได้)
 ![alt](asset/class-diagram-finalbackend.umlcd.png)
 
 Backend Version ปัจจุบัน
