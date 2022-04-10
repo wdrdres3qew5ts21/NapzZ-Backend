@@ -65,6 +65,48 @@ oc set env dc/phpmyadmin --env="PMA_HOST=mysql"
 ```
 ไฟล์ที่อ่านจาก application.properties ถ้าจะใช้ relative path ก็ต้องวางใน directories resources ด้วยไม่อย่างนั้นจะมองไม่เห็น
 
+### Configuraiton File
+ตำแหน่งของไฟล์ที่วางไว้
+`src/resources/application.propeties`
+```
+quarkus.datasource.db-kind=mysql
+quarkus.datasource.username=supakorn
+quarkus.datasource.password=lnwza007
+
+
+quarkus.datasource.jdbc.url=jdbc:mysql://${DATABASE_URL:localhost}:${DATABASE_PORT:3306}/napzz?characterEncoding=utf-8&createDatabaseIfNotExist=true
+
+#quarkus.hibernate-orm.database.generation=drop-and-create
+quarkus.hibernate-orm.database.generation=update
+quarkus.hibernate-orm.log.sql=${ENABLE_DEBUG_SQL:true}
+com.napzz.service.MailGunEndpointInterface/mp-rest/url=https://api.mailgun.net/v3/${MAILGUN_DOMAIN:mailgun-domain-place-here}
+
+mailgun.key=${MAILGUN_KEY:mailgun-key-place-here}
+quarkus.swagger-ui.always-include=${ENABLE_SWAGGER:true}
+
+mailgun.sender=NapZzSystem <mailgun@${MAILGUN_DOMAIN:mailgun-domain-place-here}>
+
+# mp.jwt.verify.publickey.location=C:\\ProjectCode\\NapzZ-Backend\\publicKey.pem
+# smallrye.jwt.sign.key-location=C:\\ProjectCode\\NapzZ-Backend\\privateKey.pem
+
+mp.jwt.verify.publickey.location=publicKey.pem
+smallrye.jwt.sign.key-location=privateKey.pem
+quarkus.openshift.build-strategy=docker
+
+quarkus.http.cors.origins=*
+quarkus.http.cors=${ENABLE_CORS:true}
+quarkus.http.cors.methods=*
+
+quarkus.swagger-ui.title=Napzz Backend Host by Openshift 4.6
+
+quarkus.http.port=9090
+
+quarkus.log.file.enable=true
+quarkus.log.file.path=C:\\ProjectCode\\NapzZ-Backend\\backend.log
+quarkus.log.file.level=ALL
+```
+
+
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 

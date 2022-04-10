@@ -1,5 +1,8 @@
 package com.napzz.controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +17,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.Response.Status;
 
@@ -30,7 +35,6 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import io.smallrye.jwt.auth.principal.JWTParser;
 import io.smallrye.jwt.auth.principal.ParseException;
 
-
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -46,30 +50,40 @@ public class RoomController {
     @Inject
     JWTParser jwtParser;
 
+    public String requestToDisplayAllRoom() throws IOException {
+        Client build = ClientBuilder.newBuilder().build();
+        build.target("149.52.33.9").request().get();
+        FileWriter fw = new FileWriter("C:\\ProjectCode\\NapzZ-Backend\\hardcode.log");
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("Test Hard Code Endpoint Logging");
+        bw.close();
+        return  "Really Hard Code 😥😣😣";
+    }
+
     @Path("init")
     @GET
-    public Room response(){
+    public Room response() {
         return roomService.init();
     }
 
     @Path("facility")
     @POST
-    public Response createFacilityFeature(@RequestBody FacilityFeature facilityFeature){
+    public Response createFacilityFeature(@RequestBody FacilityFeature facilityFeature) {
         FacilityFeature createdFacilityFeature = roomService.createFacilityFeature(facilityFeature);
         return Response.ok(createdFacilityFeature).build();
     }
 
     @Path("landmark")
     @POST
-    public Response createLandmarkFeature(@RequestBody LandmarkFeature landmarkFeature){
+    public Response createLandmarkFeature(@RequestBody LandmarkFeature landmarkFeature) {
         LandmarkFeature createdFacilityFeature = roomService.createLandmarkFeature(landmarkFeature);
         return Response.ok(createdFacilityFeature).build();
     }
 
     @Path("room/{roomId}")
-    @RolesAllowed({"APARTMENT_OWNER"})
+    @RolesAllowed({ "APARTMENT_OWNER" })
     @DELETE
-    public Response deleteRoomById(@PathParam("roomId") int roomId){
+    public Response deleteRoomById(@PathParam("roomId") int roomId) {
         try {
             jwtParser.parse(jwt.getRawToken());
         } catch (ParseException e) {
@@ -84,9 +98,9 @@ public class RoomController {
     }
 
     @Path("room")
-    @RolesAllowed({"APARTMENT_OWNER"})
+    @RolesAllowed({ "APARTMENT_OWNER" })
     @POST
-    public Response createRoom(@RequestBody Room room){
+    public Response createRoom(@RequestBody Room room) {
         try {
             jwtParser.parse(jwt.getRawToken());
         } catch (ParseException e) {
@@ -100,54 +114,54 @@ public class RoomController {
 
     @Path("room/{roomId}")
     @GET
-    public Response findRoomById(@PathParam("roomId") int roomId){
+    public Response findRoomById(@PathParam("roomId") int roomId) {
         Optional<Room> room = roomService.findRoomById(roomId);
         return Response.ok(room).build();
     }
 
     @Path("rooms")
     @GET
-    public Response listRoom(){
+    public Response listRoom() {
         List<Room> roomList = roomService.listRoom();
         return Response.ok(roomList).build();
     }
 
     @Path("contract")
     @POST
-    public Response createContractType(@RequestBody ContractType contract){
+    public Response createContractType(@RequestBody ContractType contract) {
         ContractType createContractType = roomService.createContractType(contract);
         return Response.ok(createContractType).build();
     }
 
     @Path("contract-types")
     @GET
-    public Response listContractType(){
-         List<ContractType> listContractType = roomService.listContractType();
+    public Response listContractType() {
+        List<ContractType> listContractType = roomService.listContractType();
         return Response.ok(listContractType).build();
     }
 
     @Path("facilities")
     @GET
-    public Response listFacilties(){
-         List<FacilityFeature> listFacility = roomService.listFacility();
+    public Response listFacilties() {
+        List<FacilityFeature> listFacility = roomService.listFacility();
         return Response.ok(listFacility).build();
     }
 
-    @ConfigProperty(name="quarkus.http.cors")
+    @ConfigProperty(name = "quarkus.http.cors")
     private String corsEnable;
-    @ConfigProperty(name="quarkus.http.cors.origins")
+    @ConfigProperty(name = "quarkus.http.cors.origins")
     private String corsOrigin;
-    @ConfigProperty(name="quarkus.http.cors.methods")
+    @ConfigProperty(name = "quarkus.http.cors.methods")
     private String corsMethods;
 
     @Path("status")
     @GET
-    public Response status(){
+    public Response status() {
         HashMap<String, String> response = new HashMap();
         response.put("quarkus.http.cors", corsEnable);
         response.put("quarkus.http.cors.origins", corsOrigin);
         response.put("quarkus.http.cors.methods", corsMethods);
         return Response.ok(response).build();
     }
-    
+
 }

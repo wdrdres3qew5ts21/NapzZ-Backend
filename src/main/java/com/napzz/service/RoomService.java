@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 
 import com.napzz.entity.Apartment;
@@ -153,5 +155,8 @@ public class RoomService {
     public void deleteRoomById(Integer apartmentOwnerId, int roomId) {
         roomRepository.deleteById(roomId);
     }
+
+
+
 
 }

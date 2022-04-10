@@ -10,9 +10,9 @@ services:
       volumes:
        - db-data:/var/lib/mysql
       environment:
-        MYSQL_ROOT_PASSWORD: futurecloudinc
-        MYSQL_USER: napzzadmin
-        MYSQL_PASSWORD: futurecloudinc
+        MYSQL_ROOT_PASSWORD: lnwza007
+        MYSQL_USER: supakorn
+        MYSQL_PASSWORD: lnwza007
 
    app:
       depends_on:
